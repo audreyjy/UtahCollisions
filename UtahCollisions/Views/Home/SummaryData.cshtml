@@ -14,14 +14,35 @@
         <table class="table table-bordered table-striped">
             <thead class="font-weight-bold">
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>Date</td>
+                    <td>Route</td>
+                    <td>Milepoint</td>
+                    <td>Latitude</td>
+                    <td>Longitude</td>
+                    <td>Main Road Name</td>
+                    <td>City</td>
+                    <td>County </td>
+                    <td>Crash Severity</td>
+                    <td>Work Zone Related</td>
+                    <td>Pedestrian Involved</td>
+                    <td>Bicyclist Involved</td>
+                    <td>Motorcycle Invovled</td>
+                    <td>Improper Restraint</td>
+                    <td>Unrestrained</td>
+                    <td>DUI</td>
+                    <td>Intersection Related</td>
+                    <td>Wild Animal Related</td>
+                    <td>Domestic Animal Related</td>
+                    <td>Overturn Rollover</td>
+                    <td>Commercial Motor Vehicle Involved</td>
+                    <td>Teenage Driver Involved</td>
+                    <td>Older Driver Involved</td>
+                    <td>Night Dark Condition</td>
+                    <td>Single Vehicle</td>
+                    <td>Distracted Driving</td>
+                    <td>Drowsy Driving</td>
+                    <td>Roadway Departure</td>
+
                     <td>Edit</td>
                     <td>Delete</td>
                 </tr>
@@ -29,9 +50,29 @@
 
 
             <tbody>
-                @foreach (var b in Model)
-                {
+                @*@foreach (var b in Model)
+                {*@
                 <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -46,7 +87,7 @@
                     <td><a asp-controller="Home" asp-action="Delete">Delete</a></td> <!-- add "asp-route-collisionid="c.collisionID"" in route -->
 
                 </tr>
-                }
+                @*}*@
 
             </tbody>
         </table>

@@ -11,16 +11,22 @@ namespace UtahCollisions.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        // added for repository pattern 
+        private iUtahCollisionRepository repo; 
+        public HomeController (iUtahCollisionRepository temp)
         {
-            _logger = logger;
+            repo = temp; 
         }
 
         public IActionResult Index()
         {
+            var blah = repo.UtahCrashData.ToList(); 
             return View();
+        }
+
+        public IActionResult SummaryData()
+        {
+            return View(); 
         }
 
         public IActionResult Privacy()
@@ -28,10 +34,5 @@ namespace UtahCollisions.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
