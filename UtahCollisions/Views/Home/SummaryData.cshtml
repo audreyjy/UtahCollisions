@@ -4,6 +4,8 @@
 @{
 }
 
+@model List<Collision>
+
 <div class="row m-1 p-1">
     <div class="col-3">
         <p style="text-align:center">View component will go here - filter by something</p>
@@ -50,44 +52,43 @@
 
 
             <tbody>
-                @*@foreach (var b in Model)
-                {*@
+                @foreach (var c in Model)
+                {
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>@c.CRASH_DATETIME</td>
+                    <td>@c.ROUTE</td>
+                    <td>@c.MILEPOINT</td>
+                    <td>@c.LAT_UTM_Y</td>
+                    <td>@c.LONG_UTM_X</td>
+                    <td>@c.MAIN_ROAD_NAME</td>
+                    <td>@c.CITY</td>
+                    <td>@c.COUNTY_NAME</td>
+                    <td>@c.CRASH_SEVERITY_ID/td>
+                    <td>@c.WORK_ZONE_RELATED</td>
+                    <td>@c.PEDESTRIAN_INVOLVED</td>
+                    <td>@c.BICYCLIST_INVOLVED</td>
+                    <td>@c.MOTORCYCLE_INVOLVED</td>
+                    <td>@c.IMPROPER_RESTRAINT</td>
+                    <td>@c.UNRESTRAINED</td>
+                    <td>@c.DUI</td>
+                    <td>@c.INTERSECTION_RELATED</td>
+                    <td>@c.WILD_ANIMAL_RELATED</td>
+                    <td>@c.DOMESTIC_ANIMAL_RELATED</td>
+                    <td>@c.OVERTURN_ROLLOVER</td>
+                    <td>@c.COMMERCIAL_MOTOR_VEH_INVOLVED</td>
+                    <td>@c.TEENAGE_DRIVER_INVOLVED</td>
+                    <td>@c.OLDER_DRIVER_INVOLVED</td>
+                    <td>@c.NIGHT_DARK_CONDITION</td>
+                    <td>@c.SINGLE_VEHICLE</td>
+                    <td>@c.DISTRACTED_DRIVING</td>
+                    <td>@c.DROWSY_DRIVING</td>
+                    <td>@c.ROADWAY_DEPARTURE</td>
 
                     <td><a asp-controller="Home" asp-action="Edit">Edit</a></td> <!-- add "asp-route-collisionid="c.collisionID"" in route -->
                     <td><a asp-controller="Home" asp-action="Delete">Delete</a></td> <!-- add "asp-route-collisionid="c.collisionID"" in route -->
 
                 </tr>
-                @*}*@
+                }
 
             </tbody>
         </table>

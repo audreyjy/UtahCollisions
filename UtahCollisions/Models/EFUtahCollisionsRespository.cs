@@ -13,6 +13,6 @@ namespace UtahCollisions.Models
         {
             context = temp; 
         }
-        public IQueryable<Collision> UtahCrashData => context.Utah_Crash_Data_2020; // need to connect to the DB for this to work 
+        public IQueryable<Collision> Utah_Crash_Data_2020 => context.Utah_Crash_Data_2020; // need to connect to the DB for this to work 
     }
 }

@@ -20,13 +20,13 @@ namespace UtahCollisions.Controllers
 
         public IActionResult Index()
         {
-            var blah = repo.UtahCrashData.ToList(); 
             return View();
         }
 
         public IActionResult SummaryData()
         {
-            return View(); 
+            var collision = repo.Utah_Crash_Data_2020.ToList(); 
+            return View(collision); 
         }
 
         public IActionResult Privacy()
