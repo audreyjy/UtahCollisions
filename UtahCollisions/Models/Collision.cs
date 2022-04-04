@@ -19,7 +19,7 @@ namespace UtahCollisions.Models
         public string MAIN_ROAD_NAME { get; set; }
         public string CITY { get; set; }
         public string COUNTY_NAME { get; set; }
-        public int CRASH_SEVERITY_ID { get; set; }
+        public int? CRASH_SEVERITY_ID { get; set; }
         public string WORK_ZONE_RELATED {get; set;}
         public string PEDESTRIAN_INVOLVED { get; set; }
         public string BICYCLIST_INVOLVED { get; set; }
