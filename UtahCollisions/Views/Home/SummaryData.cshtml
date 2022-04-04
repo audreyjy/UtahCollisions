@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Collision Summary";
+}
+@{
+}
+
+<div class="row m-1 p-1">
+    <div class="col-3">
+        <p style="text-align:center">View component will go here - filter by something</p>
+    </div>
+
+    <div class="col-9">
+        <h1> Viewbag . something will go here to dynamically change title </h1>
+        <table class="table table-bordered table-striped">
+            <thead class="font-weight-bold">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (var b in Model)
+                {
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                    <td><a asp-controller="Home" asp-action="Edit">Edit</a></td> <!-- add "asp-route-collisionid="c.collisionID"" in route -->
+                    <td><a asp-controller="Home" asp-action="Delete">Delete</a></td> <!-- add "asp-route-collisionid="c.collisionID"" in route -->
+
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
