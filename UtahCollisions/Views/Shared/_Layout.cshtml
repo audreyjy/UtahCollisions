@@ -21,6 +21,37 @@
     <!-- Main Stylesheet -->
     <link href="~/css/style.css" rel="stylesheet" />
 
+    <!--SCROLL BAR TABLE-->
+    <!--Table with scroll bars-->
+    <style>
+        .scroll {
+            border: none;
+            padding: 5px;
+            font: 11px/12px sans-serif;
+            width: 600px;
+            height: 900px;
+            overflow: scroll;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            border: 1px solid grey;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6699CC;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00BFFF;
+        }
+    </style>
 </head>
 
 <body id="top">
