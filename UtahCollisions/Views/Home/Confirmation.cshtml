@@ -1,0 +1,70 @@
+﻿@{
+}
+
+
+@model UtahCollisions.Models.Collision;
+
+
+<h2>New Movie Successfully Added</h2>
+<p>Thank you for adding @Model.CRASH_ID to our list.</p>
+<p>Please feel free to add another by going to the add movie page again.</p>
+<div>
+    <form method="post">
+
+        <div asp-validation-summary="All"></div>
+
+
+        <input asp-for="CRASH_ID" type="hidden" />
+
+        <input asp-for="CRASH_DATETIME" type="hidden" />
+        <br />
+
+        <input asp-for="ROUTE" type="hidden"/>
+        <br />
+
+        <input asp-for="MILEPOINT" type="hidden"/>
+        <br />
+
+        <input asp-for="LAT_UTM_Y" type="hidden"/>
+        <br />
+
+        <input asp-for="LONG_UTM_X" type="hidden"/>
+        <br />
+
+        <input asp-for="MAIN_ROAD_NAME" type="hidden"/>
+        <br />
+
+        <input asp-for="CITY" type="hidden"/>
+        <br />
+
+        <input asp-for="COUNTY_NAME" type="hidden"/>
+        <br />
+
+        <input asp-for="CRASH_SEVERITY_ID" type="hidden"/>
+        <br />
+
+        <input asp-for="WORK_ZONE_RELATED" type="hidden" />
+        <input asp-for="PEDESTRIAN_INVOLVED" type="hidden" />
+        <input asp-for="BICYCLIST_INVOLVED" type="hidden" />
+        <input asp-for="MOTORCYCLE_INVOLVED" type="hidden" />
+        <input asp-for="IMPROPER_RESTRAINT" type="hidden" />
+        <input asp-for="UNRESTRAINED" type="hidden" />
+        <input asp-for="DUI" type="hidden" />
+        <input asp-for="INTERSECTION_RELATED" type="hidden" />
+        <input asp-for="WILD_ANIMAL_RELATED" type="hidden" />
+        <input asp-for="DOMESTIC_ANIMAL_RELATED" type="hidden" />
+        <input asp-for="OVERTURN_ROLLOVER" type="hidden" />
+        <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="hidden" />
+        <input asp-for="TEENAGE_DRIVER_INVOLVED" type="hidden" />
+        <input asp-for="OLDER_DRIVER_INVOLVED" type="hidden" />
+        <input asp-for="NIGHT_DARK_CONDITION" type="hidden" />
+        <input asp-for="SINGLE_VEHICLE" type="hidden" />
+        <input asp-for="DISTRACTED_DRIVING" type="hidden" />
+        <input asp-for="DROWSY_DRIVING" type="hidden" />
+        <input asp-for="ROADWAY_DEPARTURE" type="hidden" />
+
+
+        <button type="submit">Submit Collision</button>
+
+    </form>
+</div>

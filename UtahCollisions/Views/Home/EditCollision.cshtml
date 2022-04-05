@@ -1,0 +1,210 @@
+﻿@{
+}
+
+@model UtahCollisions.Models.Collision;
+
+
+
+<div>
+    <form method="post">
+
+        <div asp-validation-summary="All"></div>
+
+
+        <input asp-for="CRASH_ID" type="hidden" />
+
+        <label asp-for="CRASH_DATETIME">CRASH DATETIME:</label>
+        <input asp-for="CRASH_DATETIME" />
+        <br />
+
+        <label asp-for="ROUTE">ROUTE</label>
+        <input asp-for="ROUTE" />
+        <br />
+
+        <label asp-for="MILEPOINT">MILEPOINT</label>
+        <input asp-for="MILEPOINT" />
+        <br />
+
+        <label asp-for="LAT_UTM_Y">LAT_UTM_Y</label>
+        <input asp-for="LAT_UTM_Y" />
+        <br />
+
+        <label asp-for="LONG_UTM_X">LONG_UTM_X</label>
+        <input asp-for="LONG_UTM_X" />
+        <br />
+
+        <label asp-for="MAIN_ROAD_NAME">MAIN_ROAD_NAME</label>
+        <input asp-for="MAIN_ROAD_NAME" />
+        <br />
+
+        <label asp-for="CITY">CITY</label>
+        <input asp-for="CITY" />
+        <br />
+
+        <label asp-for="COUNTY_NAME">COUNTY_NAME</label>
+        <input asp-for="COUNTY_NAME" />
+        <br />
+
+        <label asp-for="CRASH_SEVERITY_ID">CRASH_SEVERITY:</label>
+        <select asp-for="CRASH_SEVERITY_ID">
+            <option value="">Select a Team</option>
+            <option value="1">No Injury</option>
+            <option value="2">Possible Injury</option>
+            <option value="3">Suspected Minor Injury</option>
+            <option value="4">Suspected Serious Injury</option>
+            <option value="5">Fatal</option>
+        </select>
+        <br />
+
+        <label asp-for="WORK_ZONE_RELATED">WORK_ZONE_RELATED</label>
+        <input asp-for="WORK_ZONE_RELATED" value="True" type="radio">True</input>
+        <input asp-for="WORK_ZONE_RELATED" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="PEDESTRIAN_INVOLVED">PEDESTRIAN_INVOLVED</label>
+        <input asp-for="PEDESTRIAN_INVOLVED" value="True" type="radio">True</input>
+        <input asp-for="PEDESTRIAN_INVOLVED" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="BICYCLIST_INVOLVED">BICYCLIST_INVOLVED</label>
+        <input asp-for="BICYCLIST_INVOLVED" value="True" type="radio">True</input>
+        <input asp-for="BICYCLIST_INVOLVED" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="MOTORCYCLE_INVOLVED">MOTORCYCLE_INVOLVED</label>
+        <input asp-for="MOTORCYCLE_INVOLVED" value="True" type="radio">True</input>
+        <input asp-for="MOTORCYCLE_INVOLVED" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="IMPROPER_RESTRAINT">IMPROPER_RESTRAINT</label>
+        <input asp-for="IMPROPER_RESTRAINT" value="True" type="radio">True</input>
+        <input asp-for="IMPROPER_RESTRAINT" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="UNRESTRAINED">UNRESTRAINED</label>
+        <input asp-for="UNRESTRAINED" value="True" type="radio">True</input>
+        <input asp-for="UNRESTRAINED" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="DUI">DUI</label>
+        <input asp-for="DUI" value="True" type="radio">True</input>
+        <input asp-for="DUI" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="INTERSECTION_RELATED">INTERSECTION_RELATED</label>
+        <input asp-for="INTERSECTION_RELATED" value="True" type="radio">True</input>
+        <input asp-for="INTERSECTION_RELATED" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="WILD_ANIMAL_RELATED">WILD_ANIMAL_RELATED</label>
+        <input asp-for="WILD_ANIMAL_RELATED" value="True" type="radio">True</input>
+        <input asp-for="WILD_ANIMAL_RELATED" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="DOMESTIC_ANIMAL_RELATED">DOMESTIC_ANIMAL_RELATED</label>
+        <input asp-for="DOMESTIC_ANIMAL_RELATED" value="True" type="radio">True</input>
+        <input asp-for="DOMESTIC_ANIMAL_RELATED" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="OVERTURN_ROLLOVER">OVERTURN_ROLLOVER</label>
+        <input asp-for="OVERTURN_ROLLOVER" value="True" type="radio">True</input>
+        <input asp-for="OVERTURN_ROLLOVER" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">COMMERCIAL_MOTOR_VEH_INVOLVED</label>
+        <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="True" type="radio">True</input>
+        <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="TEENAGE_DRIVER_INVOLVED">TEENAGE_DRIVER_INVOLVED</label>
+        <input asp-for="TEENAGE_DRIVER_INVOLVED" value="True" type="radio">True</input>
+        <input asp-for="TEENAGE_DRIVER_INVOLVED" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="OLDER_DRIVER_INVOLVED">OLDER_DRIVER_INVOLVED</label>
+        <input asp-for="OLDER_DRIVER_INVOLVED" value="True" type="radio">True</input>
+        <input asp-for="OLDER_DRIVER_INVOLVED" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="NIGHT_DARK_CONDITION">NIGHT_DARK_CONDITION</label>
+        <input asp-for="NIGHT_DARK_CONDITION" value="True" type="radio">True</input>
+        <input asp-for="NIGHT_DARK_CONDITION" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="SINGLE_VEHICLE">SINGLE_VEHICLE</label>
+        <input asp-for="SINGLE_VEHICLE" value="True" type="radio">True</input>
+        <input asp-for="SINGLE_VEHICLE" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="DISTRACTED_DRIVING">DISTRACTED_DRIVING</label>
+        <input asp-for="DISTRACTED_DRIVING" value="True" type="radio">True</input>
+        <input asp-for="DISTRACTED_DRIVING" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="DROWSY_DRIVING">DROWSY_DRIVING</label>
+        <input asp-for="DROWSY_DRIVING" value="True" type="radio">True</input>
+        <input asp-for="DROWSY_DRIVING" value="False" type="radio">False</input>
+        <br />
+
+        <label asp-for="ROADWAY_DEPARTURE">ROADWAY_DEPARTURE</label>
+        <input asp-for="ROADWAY_DEPARTURE" value="True" type="radio">True</input>
+        <input asp-for="ROADWAY_DEPARTURE" value="False" type="radio">False</input>
+        <br />
+
+
+        <button type="submit">Submit Collision</button>
+
+    </form>
+</div>
+
+
+
+
+@*<form method="post">
+
+
+    <label></label>
+    <input />
+
+            <td>@c.CRASH_DATETIME</td>
+            <td>@c.ROUTE</td>
+            <td>@c.MILEPOINT</td>
+            <td>@c.LAT_UTM_Y</td>
+            <td>@c.LONG_UTM_X</td>
+            <td>@c.MAIN_ROAD_NAME</td>
+            <td>@c.CITY</td>
+            <td>@c.COUNTY_NAME</td>
+            <td>@c.CRASH_SEVERITY_ID</td>
+
+            <td>@c.WORK_ZONE_RELATED</td>
+            <td>@c.PEDESTRIAN_INVOLVED</td>
+            <td>@c.BICYCLIST_INVOLVED</td>
+
+            <td>@c.MOTORCYCLE_INVOLVED</td>
+            <td>@c.IMPROPER_RESTRAINT</td>
+            <td>@c.UNRESTRAINED</td>
+
+            <td>@c.DUI</td>
+            <td>@c.INTERSECTION_RELATED</td>
+            <td>@c.WILD_ANIMAL_RELATED</td>
+
+            <td>@c.DOMESTIC_ANIMAL_RELATED</td>
+            <td>@c.OVERTURN_ROLLOVER</td>
+            <td>@c.COMMERCIAL_MOTOR_VEH_INVOLVED</td>
+
+            <td>@c.TEENAGE_DRIVER_INVOLVED</td>
+            <td>@c.OLDER_DRIVER_INVOLVED</td>
+            <td>@c.NIGHT_DARK_CONDITION</td>
+
+            <td>@c.SINGLE_VEHICLE</td>
+            <td>@c.DISTRACTED_DRIVING</td>
+            <td>@c.DROWSY_DRIVING</td>
+            <td>@c.ROADWAY_DEPARTURE</td>
+
+
+            <td><a asp-controller="Home" asp-action="EditCollision" asp-route-collisionid="@c.CRASH_ID">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete" asp-route-collisionid="@c.CRASH_ID">Delete</a></td>
+
+
+
+    </form>*@
