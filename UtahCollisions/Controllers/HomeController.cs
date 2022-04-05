@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using UtahCollisions.Models;
+using UtahCollisions.Models.ViewModels;
 
 namespace UtahCollisions.Controllers
 {
@@ -23,10 +24,26 @@ namespace UtahCollisions.Controllers
             return View();
         }
 
-        public IActionResult SummaryData()
+        public IActionResult SummaryData(int pageNum = 1)
         {
-            var collision = repo.Utah_Crash_Data_2020.ToList(); 
-            return View(collision); 
+            int pageSize = 100;
+
+            var x = new CollisionsViewModel
+            {
+                Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumCollisions = repo.Utah_Crash_Data_2020.Count(),
+                    CollisionsPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+
+            }; 
+
+            return View(x); 
         }
 
         public IActionResult Privacy()
