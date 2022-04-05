@@ -29,24 +29,29 @@ namespace UtahCollisions.Controllers
             return View();
         }
 
-        public IActionResult SummaryData(string severityID, int pageNum = 1)
+        public IActionResult SummaryData(string city, string severityID, int pageNum = 1)
         {
             int pageSize = 100;
 
-            if (severityID is null)
+            if (severityID is null && city is null)
             {
                 ViewBag.Header = "All Records";
             }
-            else
+            else if (city is null && severityID != null)
             {
-                ViewBag.Header = "Level " + severityID + " Severity"; 
+                ViewBag.Header = "Level " + severityID + " Severity Collision Records"; 
+            }
+            else if (city != null)
+            {
+                ViewBag.Header = city + " City Collision Records"; 
             }
 
             var x = new CollisionsViewModel
             {
 
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
-                .Where(x => x.CRASH_SEVERITY_ID.ToString() == severityID)
+                .Where(x => x.CRASH_SEVERITY_ID.ToString() == severityID || severityID == null)
+                .Where(x => x.CITY == city || city == null)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
