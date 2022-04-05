@@ -26,7 +26,11 @@
                     <td>City</td>
                     <td>County</td>
                     <td>Crash Severity</td>
-                    <td>Work Zone Related</td>
+
+                    <td>Collision Details</td>
+
+
+                    @*<td>Work Zone Related</td>
                     <td>Pedestrian Involved</td>
                     <td>Bicyclist Involved</td>
                     <td>Motorcycle Invovled</td>
@@ -44,7 +48,7 @@
                     <td>Single Vehicle</td>
                     <td>Distracted Driving</td>
                     <td>Drowsy Driving</td>
-                    <td>Roadway Departure</td>
+                    <td>Roadway Departure</td>*@
 
                 </tr>
             </thead>
@@ -65,7 +69,115 @@
                         <td>@c.COUNTY_NAME</td>
                         <td>@c.CRASH_SEVERITY_ID</td>
 
-                        <td>@c.WORK_ZONE_RELATED</td>
+
+                        <td>
+                            <ul>
+                                @if (@c.WORK_ZONE_RELATED.ToString() == "true")
+                                {
+                                    <li>Work Zone Related </li>
+                                    ;
+                                }
+
+                                @if (c.PEDESTRIAN_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Pedestrian Involved</li>
+                                    ;
+                                }
+
+                                @if (c.BICYCLIST_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Bicyclist Involved</li>
+                                    ;
+                                }
+                                @if (c.MOTORCYCLE_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Motorcycle Involved</li>
+                                    ;
+                                }
+
+                                @if (c.IMPROPER_RESTRAINT.ToString() == "true")
+                                {
+                                    <li>Improper Restraint</li>
+                                    ;
+                                }
+
+                                @if (c.UNRESTRAINED.ToString() == "true")
+                                {
+                                    <li>Unrestrained</li>
+                                    ;
+                                }
+
+                                @if (c.DUI.ToString() == "true")
+                                {
+                                    <li>DUI</li>
+                                    ;
+                                }
+
+                                @if (c.INTERSECTION_RELATED.ToString() == "true")
+                                {
+                                    <li>Intersection Related</li>
+                                    ;
+                                }
+
+                                @if (c.WILD_ANIMAL_RELATED.ToString() == "true")
+                                {
+                                    <li>Wild Animal Related</li>
+                                    ;
+                                }
+                                @if (c.DOMESTIC_ANIMAL_RELATED.ToString() == "true")
+                                {
+                                    <li>Domestic Animal Related</li>
+                                    ;
+                                }
+                                @if (c.OVERTURN_ROLLOVER.ToString() == "true")
+                                {
+                                    <li>Overturn Rollover</li>
+                                    ;
+                                }
+                                @if (c.COMMERCIAL_MOTOR_VEH_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Commercial Motor Vehicle Involved</li>
+                                    ;
+                                }
+                                @if (c.TEENAGE_DRIVER_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Teenage Driver Involved</li>
+                                    ;
+                                }
+                                @if (c.OLDER_DRIVER_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Older Driver Involved</li>
+                                    ;
+                                }
+                                @if (c.NIGHT_DARK_CONDITION.ToString() == "true")
+                                {
+                                    <li>Night Dark Condition</li>
+                                    ;
+                                }
+                                @if (c.SINGLE_VEHICLE.ToString() == "true")
+                                {
+                                    <li>Single Vehicle</li>
+                                    ;
+                                }
+                                @if (c.DISTRACTED_DRIVING.ToString() == "true")
+                                {
+                                    <li>Distracted Driving</li>
+                                    ;
+                                }
+                                @if (c.DROWSY_DRIVING.ToString() == "true")
+                                {
+                                    <li>Drowsy Driving</li>
+                                    ;
+                                }
+                                @if (c.ROADWAY_DEPARTURE.ToString() == "true")
+                                {
+                                    <li>Roadway Departure</li>
+;
+                                }
+                            </ul>
+                        </td>
+
+                        @*<td>@c.WORK_ZONE_RELATED</td>
                         <td>@c.PEDESTRIAN_INVOLVED</td>
                         <td>@c.BICYCLIST_INVOLVED</td>
                         <td>@c.MOTORCYCLE_INVOLVED</td>
@@ -83,7 +195,7 @@
                         <td>@c.SINGLE_VEHICLE</td>
                         <td>@c.DISTRACTED_DRIVING</td>
                         <td>@c.DROWSY_DRIVING</td>
-                        <td>@c.ROADWAY_DEPARTURE</td>
+                        <td>@c.ROADWAY_DEPARTURE</td>*@
 
                     </tr>
                 }
