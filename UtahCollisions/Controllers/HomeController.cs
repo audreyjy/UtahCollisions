@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using GoogleAuthenticatorService.Core;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -17,7 +18,7 @@ namespace UtahCollisions.Controllers
         private iUtahCollisionRepository repo;
         private SignInManager<IdentityUser> signInManager;
         private UserManager<IdentityUser> userManager;
-        public HomeController (iUtahCollisionRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
+        public HomeController(iUtahCollisionRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
         {
             repo = temp;
             userManager = um;
@@ -39,7 +40,7 @@ namespace UtahCollisions.Controllers
             }
             else
             {
-                ViewBag.Header = "Level " + severityID + " Severity"; 
+                ViewBag.Header = "Level " + severityID + " Severity";
             }
 
             var x = new CollisionsViewModel
@@ -57,9 +58,9 @@ namespace UtahCollisions.Controllers
                     CurrentPage = pageNum
                 }
 
-            }; 
+            };
 
-            return View(x); 
+            return View(x);
         }
 
         public IActionResult Privacy()
@@ -67,34 +68,79 @@ namespace UtahCollisions.Controllers
             return View();
         }
 
+        //TESTING MY MFA ACTION////////
+        //[HttpGet]
+        //public IActionResult Login(string returnURL)
+        //{
+        //    //return View(new LoginModel { returnURL = returnURL });
+        //    return View();
+        //}
+
+
+        //[HttpPost]
+        //public async Task<IActionResult> Login(LoginModel loginmodel)
+        //{
+        //    if( ModelState.IsValid )
+        //    {
+        //        IdentityUser user = await userManager.FindByNameAsync(loginmodel.Username);
+
+        //        if (user != null)
+        //        {
+        //            await signInManager.SignOutAsync();
+
+        //            if((await signInManager.PasswordSignInAsync(user, loginmodel.Password, false, false)).Succeeded)
+        //            {
+        //                //return Redirect(loginmodel ? returnURL ?? "/Admin");
+        //                return RedirectToAction("SummaryData");
+        //            }
+        //        }
+        //    }
+
+        //    ModelState.AddModelError("", "Invalid Name or Password");
+        //    return View(loginmodel);
+
+        //}
+
         [HttpGet]
-        public IActionResult Login(string returnURL)
+        public IActionResult Login()
         {
-            //return View(new LoginModel { returnURL = returnURL });
             return View();
         }
+
         [HttpPost]
-        public async Task<IActionResult> Login(LoginModel loginmodel)
+        public IActionResult Login(LoginModel loginmodel)
         {
-            if( ModelState.IsValid )
+            if (loginmodel.Username == "Admin" && loginmodel.Password == "Admin123")
             {
-                IdentityUser user = await userManager.FindByNameAsync(loginmodel.Username);
-
-                if (user != null)
-                {
-                    await signInManager.SignOutAsync();
-
-                    if((await signInManager.PasswordSignInAsync(user, loginmodel.Password, false, false)).Succeeded)
-                    {
-                        //return Redirect(loginmodel ? returnURL ?? "/Admin");
-                        return RedirectToAction("SummaryData");
-                    }
-                }
+                Session tempid = loginmodel.Username;
+                return RedirectToAction("VerifyAuth");
             }
+            else
+            {
+                ModelState.AddModelError("", "Invalid Username or Password");
+                return View();
+            }
+        }
 
-            ModelState.AddModelError("", "Invalid Name or Password");
-            return View(loginmodel);
+        [HttpGet]
+        public IActionResult VerifyAuth()
+        {
+            if (Session.tempid!=null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
             
+        }
+
+        [HttpPost]
+        public IActionResult VerifyAuth(LoginModel loginmodel)
+        {
+            var token = loginmodel.passcode;
+            TwoFactorAuthenticator tfa = new TwoFactorAuthenticator()
         }
 
     }
