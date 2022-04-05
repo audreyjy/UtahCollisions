@@ -44,7 +44,9 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #6699CC;
+            background-color: #eec0c6;
+            background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
+            /*background: #6699CC;*/
             border-radius: 10px;
         }
 
@@ -52,6 +54,7 @@
             background: #00BFFF;
         }
     </style>
+    <!---------------------------------->
 </head>
 
 <body id="top">
@@ -68,10 +71,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="text-lg-right top-right-bar mt-2 mt-lg-0">
-                            <a href="tel:+23-345-67890">
-                                <span>Call Now : </span>
-                                <span class="h4">823-4565-13456</span>
-                            </a>
+                           
+                                <a class="btn btn-main btn-round-full" asp-controller="Home" asp-action="Login" style="background-color: #eec0c6; background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%); color: #002D62; ">Sign In</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -79,7 +81,7 @@
         </div>
         <nav class="navbar navbar-expand-lg navigation" id="navbar">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                     <img src="~/images/logo.png" alt="" class="img-fluid" style="width: 150px; border-radius: 20px;">
                 </a>
 
