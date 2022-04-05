@@ -33,6 +33,15 @@ namespace UtahCollisions.Controllers
         {
             int pageSize = 100;
 
+            if (severityID is null)
+            {
+                ViewBag.Header = "All Records";
+            }
+            else
+            {
+                ViewBag.Header = "Level " + severityID + " Severity"; 
+            }
+
             var x = new CollisionsViewModel
             {
 
@@ -49,8 +58,6 @@ namespace UtahCollisions.Controllers
                 }
 
             }; 
-
-
 
             return View(x); 
         }
