@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,14 @@ namespace UtahCollisions.Controllers
     public class HomeController : Controller
     {
         // added for repository pattern 
-        private iUtahCollisionRepository repo; 
-        public HomeController (iUtahCollisionRepository temp)
+        private iUtahCollisionRepository repo;
+        private SignInManager<IdentityUser> signInManager;
+        private UserManager<IdentityUser> userManager;
+        public HomeController (iUtahCollisionRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
         {
-            repo = temp; 
+            repo = temp;
+            userManager = um;
+            signInManager = sim;
         }
 
         public IActionResult Index()
@@ -32,6 +37,36 @@ namespace UtahCollisions.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Login(string returnURL)
+        {
+            //return View(new LoginModel { returnURL = returnURL });
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginModel loginmodel)
+        {
+            if( ModelState.IsValid )
+            {
+                IdentityUser user = await userManager.FindByNameAsync(loginmodel.Username);
+
+                if (user != null)
+                {
+                    await signInManager.SignOutAsync();
+
+                    if((await signInManager.PasswordSignInAsync(user, loginmodel.Password, false, false)).Succeeded)
+                    {
+                        //return Redirect(loginmodel ? returnURL ?? "/Admin");
+                        return RedirectToAction("SummaryData");
+                    }
+                }
+            }
+
+            ModelState.AddModelError("", "Invalid Name or Password");
+            return View(loginmodel);
+            
         }
 
     }

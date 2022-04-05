@@ -76,6 +76,10 @@ namespace UtahCollisions
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
+
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
