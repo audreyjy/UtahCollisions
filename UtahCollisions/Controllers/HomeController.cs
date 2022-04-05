@@ -134,8 +134,15 @@ namespace UtahCollisions.Controllers
                 return View(c);
             }
         }
+        
+        [HttpGet]
+        public IActionResult DeleteCollision (string collisionid)
+        {
+            var crash = utahCollisions.Utah_Crash_Data_2020.Single(x => x.CRASH_ID == collisionid);
 
 
+            return View("Confirmation", crash);
+        }
 
         [HttpPost]
         public IActionResult Confirmation(Collision c)
