@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
 
@@ -34,7 +34,8 @@
 
                         <h4 class="mb-3">Be the change</h4>
                         <p class="mb-4">With your small contribution, great change is possible!</p>
-                        <a asp-controller="Home" asp-action="SummaryDataNonAuth" class="btn btn-main btn-round-full">Donate</a>
+                        <a class="btn btn-main btn-round-full" href="https://www.utahsafetycouncil.org/ProductDetails.aspx?ProductID=777">Donate</a>
+                       
 
                     </div>
 
@@ -58,7 +59,7 @@
                         <span>Machine Learning</span>
                         <h4 class="mb-3">Data Analysis</h4>
                         <p>Discover the effect and likelyhood of collisions near you!</p>
-                        <a asp-controller="Home" asp-action="SummaryDataNonAuth" class="btn btn-main btn-round-full">Analyze</a>
+                        <a asp-controller="Inference" asp-action="EnterData" class="btn btn-main btn-round-full">Analyze</a>
 
                     </div>
                 </div>
