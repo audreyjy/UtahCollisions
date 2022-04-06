@@ -13,6 +13,7 @@ using UtahCollisions.Models.ViewModels;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 
+
 namespace UtahCollisions.Controllers
 {
     public class HomeController : Controller
@@ -58,6 +59,7 @@ namespace UtahCollisions.Controllers
             {
 
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
+                .OrderBy(x => x.CRASH_ID)
                 .Where(x => x.CRASH_SEVERITY_ID.ToString() == severityID || severityID == null)
                 .Where(x => x.CITY == city || city == null)
                 .Skip((pageNum - 1) * pageSize)
@@ -99,8 +101,10 @@ namespace UtahCollisions.Controllers
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
                 .Where(x => x.CRASH_SEVERITY_ID.ToString() == severityID || severityID == null)
                 .Where(x => x.CITY == city || city == null)
+                .OrderBy(x => x.CRASH_ID)
                 .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize),
+                .Take(pageSize)
+                ,
 
                 PageInfo = new PageInfo
                 {
@@ -195,13 +199,11 @@ namespace UtahCollisions.Controllers
         }
 
 
-
+        // ADD Collision ////////////////////////////////////////////////////////////////////
 
         [HttpGet]
         public IActionResult AddCollision()
         {
-
-
             return View("EditCollision");
         }
 
@@ -218,7 +220,12 @@ namespace UtahCollisions.Controllers
                 return View(c);
             }
         }
+        // /////////////////////////////////////////////////////////////////////////////////
 
+
+
+        // EDIT/ADD COLLISION VIEW PAGE //////////////////////////////////////////////////////////////////
+        // HOW TO ROUTE to the two different confirmationpages ///////////////////////////////////////////
         [Authorize]
         [HttpGet]
         public IActionResult EditCollision (string collisionid)
@@ -233,8 +240,11 @@ namespace UtahCollisions.Controllers
         public IActionResult EditCollision(Collision c)
         {
             if (ModelState.IsValid)
-            { 
-                return View("Confirmation", c);
+            {
+                utahCollisions.Update(c);
+                utahCollisions.SaveChanges();
+
+                return RedirectToAction("SummaryData");
             }
             else  //if invalid
             {
@@ -242,6 +252,8 @@ namespace UtahCollisions.Controllers
                 return View(c);
             }
         }
+        // /////////////////////////////////////////////////////////////////////////////////////
+        // Delete Collision Confirmation ///////////////////////////////////////////////////////
         
         [HttpGet]
         public IActionResult DeleteCollision (string collisionid)
@@ -249,23 +261,47 @@ namespace UtahCollisions.Controllers
             var crash = utahCollisions.Utah_Crash_Data_2020.Single(x => x.CRASH_ID == collisionid);
 
 
-            return View("Confirmation", crash);
+            return View("DeleteConfirmation", crash);
         }
 
         [HttpPost]
-        public IActionResult Confirmation(Collision c)
+        public IActionResult DeleteCollision(Collision c)
         {
-            utahCollisions.Update(c);
+            utahCollisions.Utah_Crash_Data_2020.Remove(c);
             utahCollisions.SaveChanges();
 
             return RedirectToAction("SummaryData");
         }
+        // //////////////////////////////////////////////////////////////////////////////////
+
+
+
+        // CONFIRM ADD PAGE /////////////////////////////////////////////////
+        [HttpPost]
+        public IActionResult Confirmation(Collision c)
+        {
+            utahCollisions.Add(c);
+            utahCollisions.SaveChanges();
+
+            return RedirectToAction("SummaryData");
+        }
+        // /////////////////////////////////////////////////////////////////////////////////
+
+
+
 
         public async Task<IActionResult> LogOut()
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("Index");
         }
+
+
+        public IActionResult Map()
+        {
+            return View();
+        }
+
 
 
         //[HttpGet]
