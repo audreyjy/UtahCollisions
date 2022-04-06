@@ -41,9 +41,9 @@ namespace UtahCollisions
             ///////////////////////////////
             /////ONNX SetUp Service////////
             ///////////////////////////////
-            services.AddSingleton<InferenceSession>(
-                new InferenceSession("") //Insert location of ONNX file in the quotes! Ex: "Model/california_housing.onnx")
-            );
+            //services.AddSingleton<InferenceSession>(
+            //    new InferenceSession("") //Insert location of ONNX file in the quotes! Ex: "Model/california_housing.onnx")
+            //);
             ///////////////////////////////
             ///////////////////////////////
 
