@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.ML.OnnxRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +36,18 @@ namespace UtahCollisions
             });
 
             // for repository pattern 
-            services.AddScoped<iUtahCollisionRepository, EFUtahCollisionsRespository>(); 
+            services.AddScoped<iUtahCollisionRepository, EFUtahCollisionsRespository>();
 
+            ///////////////////////////////
+            /////ONNX SetUp Service////////
+            ///////////////////////////////
+
+            services.AddSingleton<InferenceSession>(
+                new InferenceSession("TrafficAccidentML.onnx") //Insert location of ONNX file in the quotes! Ex: "Model/california_housing.onnx")
+            );
+
+            ///////////////////////////////
+            ///////////////////////////////
 
             // for authentication users + roles 
             services.AddDbContext<AppIdentityDBContext>(options =>
@@ -80,6 +91,8 @@ namespace UtahCollisions
              //   config.DefaultPolicy = defaultAuthPolicy;
                
             //});
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
