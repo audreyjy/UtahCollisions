@@ -8,6 +8,7 @@
 
 
 @{
+    ViewData["Title"] = "Register";
     Layout = null;
 }
 
@@ -22,7 +23,7 @@
     <title>Login</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.PNG" />
 
     <!-- bootstrap.min css -->
     <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -329,12 +330,12 @@
             <form asp-controller="Home" asp-action="RegisterTest" method="post">
                 <div class="form-group">
                     <label>Username: </label>
-                    <input type="text" name="username" value="" />
+                    <input type="text" name="username" value="" class="form-control"/>
                 </div>
 
                 <div class="form-group">
                     <label>Password: </label>
-                    <input type="password" name="password" value="" />
+                    <input type="password" name="password" value="" class="form-control"/>
                 </div>
 
                 <button class="btn btn-primary btn-block" type="submit">Log In</button>
