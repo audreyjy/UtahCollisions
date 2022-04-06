@@ -12,8 +12,8 @@
         <p style="text-align:center">
             <table style="width:200px;" class="table table-bordered table-striped">
                 <thead class="font-weight-bold">
-                    <tr style="width:200px">Severity Scale</tr>
-                    <tr style="width:200px">
+                    <tr style="width:175px">Severity Scale</tr>
+                    <tr style="width:175px">
                         <td>1</td>
                         <td>2</td>
                         <td>3</td>
@@ -54,8 +54,8 @@
                     <td>Crash Severity</td>
                     <td>Collision Details</td>
 
-                    <td>Edit</td>
-                    <td>Delete</td>
+                    <td></td>
+                    <td></td>
 
 
             <tbody>
@@ -180,8 +180,8 @@
                             </ul>
                         </td>
 
-                        <td><a asp-controller="Home" asp-action="EditCollision" asp-route-collisionid="@c.CRASH_ID">Edit</a></td>
-                        <td><a asp-controller="Home" asp-action="DeleteCollision" asp-route-collisionid="@c.CRASH_ID">Delete</a></td>
+                        <td><a asp-controller="Home" asp-action="EditCollision" asp-route-collisionid="@c.CRASH_ID" class="btn btn-warning btn">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="DeleteCollision" asp-route-collisionid="@c.CRASH_ID" class="btn btn-danger">Delete</a></td>
 
                     </tr>
                 }
