@@ -58,6 +58,12 @@ namespace UtahCollisions
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 1;
             });
+
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.Cookie.Name = "Yeet.Cookie";
+                config.LoginPath = "/Home/Login";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
