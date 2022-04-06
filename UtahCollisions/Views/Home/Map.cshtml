@@ -1,3 +1,92 @@
 ﻿@{
+
+    Layout = null;
 }
 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="./index.js"></script>
+    
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 400px;
+            width: 400px;
+            /*width: 77%;
+            position: absolute;
+            overflow: hidden;*/
+            
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <div id="map"></div>
+    </div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSf3KeQrtnZHAme5TZdiGlXpKYf4kl6eA&callback=initMap&v=weekly"
+            async>
+    </script>
+
+    <script>
+        let map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 40.758701, lng: -111.876183 },
+                zoom: 8,
+            });
+        }</script>
+
+</body>
+</html>
+
+
+@*
+    <body>
+        
+
+        <script>
+            var slc = { lat: 40.75176, lng: 111.88688 };
+            var map = new google.maps.Map(document.getElementById('modal-map2'), {
+                zoom: 13,
+                center: slc,
+                mapTypeId: google.map.MapTypeId.HYBRID,
+                zoomControl: true,
+                //Position Zoom Controls
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_BOTTOM
+                },
+                //scaleControl: true,
+                streetViewControl: true,
+                //Position for Street view control
+                streetViewControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_BOTTOM
+                },
+                mapTypeControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_CENTER
+                },
+            });
+        </script>
+
+
+    </body>*@
+
+
+}

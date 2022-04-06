@@ -297,6 +297,13 @@ namespace UtahCollisions.Controllers
         }
 
 
+        public IActionResult Map()
+        {
+            return View();
+        }
+
+
+
         //[HttpGet]
         //public IActionResult Login(string returnURL)
         //{
