@@ -174,10 +174,10 @@ namespace UtahCollisions.Controllers
 
 
         [HttpPost]
-        public IActionResult VerifyAuth(FormCollection fc)
+        public IActionResult VerifyAuth(string passcode)
         {
-            
-            var token = fc["passcode"];
+
+            var token = passcode; 
             TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
               
             string useruniquekey = Key;
@@ -199,7 +199,7 @@ namespace UtahCollisions.Controllers
             string useruniquekey = Key;
             //Session["Useruniquekey"] = useruniquekey;
             var user = User.ToString();  
-            var setupinfo = tfa.GenerateSetupCode("GoogleAuthentication test", user, useruniquekey, true, 20);
+            var setupinfo = tfa.GenerateSetupCode("GoogleAuthentication test", user, useruniquekey, false, 20);
             ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
             
             return View(); 
