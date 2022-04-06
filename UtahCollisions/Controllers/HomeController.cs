@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Google.Authenticator;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -137,11 +139,10 @@ namespace UtahCollisions.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginTest(string username, string password)
         {
-  
             
             var user = await userManager.FindByNameAsync(username);
-            
-            if( user != null)
+
+            if ( user != null)
             {
                 // sign in 
               
@@ -149,12 +150,61 @@ namespace UtahCollisions.Controllers
                 
                 if (signInResult.Succeeded)
                 {
-                    return RedirectToAction("SummaryData");
+                    //adding 2FA
+                        
+                        return RedirectToAction("VerifyAuth", user);
+                    //
+
+                    
+                    // return RedirectToAction("SummaryData");
                 }
             }; 
 
             return RedirectToAction("LoginTest");
         }
+
+        //adding 2FA 
+        public IActionResult VerifyAuth()
+        {
+            
+            return View(); 
+        }
+
+        string Key = "test12345"; 
+
+
+        [HttpPost]
+        public IActionResult VerifyAuth(FormCollection fc)
+        {
+            
+            var token = fc["passcode"];
+            TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
+              
+            string useruniquekey = Key;
+     
+            bool isvalid = tfa.ValidateTwoFactorPIN(useruniquekey, token);
+            if (isvalid)
+            {
+                return RedirectToAction("SummaryData");
+            }
+
+            return RedirectToAction("LoginTest"); 
+        }
+
+
+        // for reference Base32Encoding.ToBytes()
+        public IActionResult AdminQR()
+        {
+            TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
+            string useruniquekey = Key;
+            //Session["Useruniquekey"] = useruniquekey;
+            var user = User.ToString();  
+            var setupinfo = tfa.GenerateSetupCode("GoogleAuthentication test", user, useruniquekey, true, 20);
+            ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
+            
+            return View(); 
+        }
+        //
 
         // GET Register
 
