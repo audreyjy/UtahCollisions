@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="zxx">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -71,10 +72,12 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="text-lg-right top-right-bar mt-2 mt-lg-0">
-                           
-                                <a class="btn btn-main btn-round-full" asp-controller="Home" asp-action="LoginTest" style="background-color: #eec0c6; background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%); color: #002D62; ">Sign In</a>
-                            
+
+                            <a class="btn btn-main btn-round-full" asp-controller="Home" asp-action="LoginTest" style="background-color: #eec0c6; background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%); color: #002D62; ">Sign In</a>
+                            <a class="btn btn-main btn-round-full" asp-controller="Home" asp-action="RegisterTest" style="background-color: #eec0c6; background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%); color: #002D62; ">Register</a>
+
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -94,11 +97,15 @@
                         <li class="nav-item active">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
+                        
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="SummaryDataNonAuth">Collision Data</a>
                         </li>
+
+
                         <li class="nav-item">
-                            <a class="nav-link" href="service.html">Services</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="SummaryData">Admin</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -210,7 +217,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-lg-6">
                         <div class="copyright">
-                            &copy; Copyright Reserved to <span class="text-color">Team1-1</span> by Audrey Seager, Porter Loveless, and Mark Vogt
+                            &copy; Copyright Reserved to <span class="text-color">TeamYeet1-1</span> by Audrey Seager, Porter Loveless, and Mark Vogt
                         </div>
                     </div>
                 </div>

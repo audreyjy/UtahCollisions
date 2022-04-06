@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,7 +28,6 @@ namespace UtahCollisions
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
 
             services.AddDbContext<UtahCollisionsContext>(options =>
             { 
@@ -64,6 +64,22 @@ namespace UtahCollisions
                 config.Cookie.Name = "Yeet.Cookie";
                 config.LoginPath = "/Home/LoginTest";
             });
+
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("Admin",
+            //        policy => policy.RequireClaim("Admin"));
+            //}); 
+            // {
+            //    var defaultAuthBuilder = new AuthorizationPolicyBuilder();
+            //    var defaultAuthPolicy = defaultAuthBuilder
+            //        .RequireAuthenticatedUser()
+            //        .RequireClaim()
+            //       .Build();
+
+             //   config.DefaultPolicy = defaultAuthPolicy;
+               
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
