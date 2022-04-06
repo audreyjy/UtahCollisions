@@ -10,8 +10,9 @@
 
         <div asp-validation-summary="All"></div>
 
-
-        <input asp-for="CRASH_ID" type="hidden" />
+        <label asp-for="CRASH_ID">CRASH_ID: </label>
+        <input asp-for="CRASH_ID" />
+        <br/>
 
         <label asp-for="CRASH_DATETIME">CRASH DATETIME:</label>
         <input asp-for="CRASH_DATETIME" />
@@ -47,7 +48,7 @@
 
         <label asp-for="CRASH_SEVERITY_ID">CRASH_SEVERITY:</label>
         <select asp-for="CRASH_SEVERITY_ID">
-            <option value="">Select a Team</option>
+            <option value="">Select a Severity</option>
             <option value="1">No Injury</option>
             <option value="2">Possible Injury</option>
             <option value="3">Suspected Minor Injury</option>

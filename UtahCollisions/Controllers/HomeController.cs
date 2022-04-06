@@ -38,6 +38,7 @@ namespace UtahCollisions.Controllers
             var x = new CollisionsViewModel
             {
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
+                .OrderBy(x => x.CRASH_ID)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
