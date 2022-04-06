@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using UtahCollisions.Models;
 using UtahCollisions.Models.ViewModels;
@@ -136,20 +137,23 @@ namespace UtahCollisions.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginTest(string username, string password)
         {
+  
+            
             var user = await userManager.FindByNameAsync(username);
             
-            if(user != null)
+            if( user != null)
             {
                 // sign in 
+              
                 var signInResult = await signInManager.PasswordSignInAsync(user, password, false, false);
                 
                 if (signInResult.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("SummaryData");
                 }
             }; 
 
-            return RedirectToAction("Index");
+            return RedirectToAction("LoginTest");
         }
 
         // GET Register
