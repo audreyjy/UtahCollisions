@@ -265,7 +265,10 @@ namespace UtahCollisions.Controllers
             return RedirectToAction("Index");
         }
 
-
+        public IActionResult Map()
+        {
+            return View();
+        }
 
 
         //[HttpGet]
