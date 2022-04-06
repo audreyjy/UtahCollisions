@@ -10,6 +10,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using UtahCollisions.Models;
 using UtahCollisions.Models.ViewModels;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 
 namespace UtahCollisions.Controllers
 {
@@ -266,8 +268,6 @@ namespace UtahCollisions.Controllers
         }
 
 
-
-
         //[HttpGet]
         //public IActionResult Login(string returnURL)
         //{
@@ -298,7 +298,7 @@ namespace UtahCollisions.Controllers
 
         //}
 
-        
-    
-}
+
+
+    }
 }
