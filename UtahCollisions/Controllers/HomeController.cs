@@ -17,11 +17,13 @@ namespace UtahCollisions.Controllers
         private iUtahCollisionRepository repo;
         private SignInManager<IdentityUser> signInManager;
         private UserManager<IdentityUser> userManager;
-        public HomeController (iUtahCollisionRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim)
+        private UtahCollisionsContext utahCollisions;
+        public HomeController (iUtahCollisionRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim, UtahCollisionsContext UCC)
         {
             repo = temp;
             userManager = um;
             signInManager = sim;
+            utahCollisions = UCC;
         }
 
         public IActionResult Index()
@@ -53,6 +55,7 @@ namespace UtahCollisions.Controllers
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
                 .Where(x => x.CRASH_SEVERITY_ID.ToString() == severityID || severityID == null)
                 .Where(x => x.CITY == city || city == null)
+                .OrderBy(x => x.CRASH_ID)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
@@ -113,11 +116,12 @@ namespace UtahCollisions.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login(string returnURL)
+        public IActionResult Login()
         {
-            //return View(new LoginModel { returnURL = returnURL });
             return View();
         }
+
+        // this controller will only let you move forward if you successfully log in, then route to the next page
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel loginmodel)
         {
@@ -138,8 +142,72 @@ namespace UtahCollisions.Controllers
             }
 
             ModelState.AddModelError("", "Invalid Name or Password");
-            return View(loginmodel);
-            
+            return View(loginmodel);    
+        }
+
+
+        [HttpGet]
+        public IActionResult AddCollision()
+        {
+
+
+            return View("EditCollision");
+        }
+
+        [HttpPost]
+        public IActionResult AddCollision(Collision c)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("Confirmation", c);
+            }
+            else  //if invalid
+            {
+
+                return View(c);
+            }
+        }
+
+
+        [HttpGet]
+        public IActionResult EditCollision (string collisionid)
+        {
+            var crash = utahCollisions.Utah_Crash_Data_2020.Single(x => x.CRASH_ID == collisionid);
+
+
+            return View(crash);
+        }
+
+        [HttpPost]
+        public IActionResult EditCollision(Collision c)
+        {
+            if (ModelState.IsValid)
+            { 
+                return View("Confirmation", c);
+            }
+            else  //if invalid
+            {
+
+                return View(c);
+            }
+        }
+        
+        [HttpGet]
+        public IActionResult DeleteCollision (string collisionid)
+        {
+            var crash = utahCollisions.Utah_Crash_Data_2020.Single(x => x.CRASH_ID == collisionid);
+
+
+            return View("Confirmation", crash);
+        }
+
+        [HttpPost]
+        public IActionResult Confirmation(Collision c)
+        {
+            utahCollisions.Update(c);
+            utahCollisions.SaveChanges();
+
+            return View("SummaryData");
         }
 
     }

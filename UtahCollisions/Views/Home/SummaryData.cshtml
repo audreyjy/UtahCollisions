@@ -6,6 +6,7 @@
 
 @model CollisionsViewModel  
 
+
 <div class="row m-1 p-1">
     <div class="col-3">
         <p style="text-align:center"><vc:severity></vc:severity></p>
@@ -46,58 +47,93 @@
                     <td>Drowsy Driving</td>
                     <td>Roadway Departure</td>
 
-                    <td>Edit</td>
-                    <td>Delete</td>
-                </tr>
-            </thead>
 
-
-            <tbody>
-                @foreach (var c in Model.Utah_Crash_Data_2020)
-                {
-
+        <div class="col-9 scroll" style="border: solid #1F305E; border-radius: 10px;">
+            <a class="btn btn-primary btn-lg" asp-controller="Home" asp-action="AddCollision">Add Accident</a>
+            <h1> Viewbag . something will go here to dynamically change title </h1>
+            <table class="table table-bordered table-striped">
+                <thead class="font-weight-bold">
                     <tr>
-                        <td>@c.CRASH_DATETIME</td>
-                        <td>@c.ROUTE</td>
-                        <td>@c.MILEPOINT</td>
-                        <td>@c.LAT_UTM_Y</td>
-                        <td>@c.LONG_UTM_X</td>
-                        <td>@c.MAIN_ROAD_NAME</td>
-                        <td>@c.CITY</td>
-                        <td>@c.COUNTY_NAME</td>
-                        <td>@c.CRASH_SEVERITY_ID</td>
-                        
-                        <td>@c.WORK_ZONE_RELATED</td>
-                        <td>@c.PEDESTRIAN_INVOLVED</td>
-                        <td>@c.BICYCLIST_INVOLVED</td>
-                        <td>@c.MOTORCYCLE_INVOLVED</td>
-                        <td>@c.IMPROPER_RESTRAINT</td>
-                        <td>@c.UNRESTRAINED</td>
-                        <td>@c.DUI</td>
-                        <td>@c.INTERSECTION_RELATED</td>
-                        <td>@c.WILD_ANIMAL_RELATED</td>
-                        <td>@c.DOMESTIC_ANIMAL_RELATED</td>
-                        <td>@c.OVERTURN_ROLLOVER</td>
-                        <td>@c.COMMERCIAL_MOTOR_VEH_INVOLVED</td>
-                        <td>@c.TEENAGE_DRIVER_INVOLVED</td>
-                        <td>@c.OLDER_DRIVER_INVOLVED</td>
-                        <td>@c.NIGHT_DARK_CONDITION</td>
-                        <td>@c.SINGLE_VEHICLE</td>
-                        <td>@c.DISTRACTED_DRIVING</td>
-                        <td>@c.DROWSY_DRIVING</td>
-                        <td>@c.ROADWAY_DEPARTURE</td>
+                        <td>Date</td>
+                        <td>Route</td>
+                        <td>Milepoint</td>
+                        <td>Latitude</td>
+                        <td>Longitude</td>
+                        <td>Main Road Name</td>
+                        <td>City</td>
+                        <td>County</td>
+                        <td>Crash Severity</td>
+                        <td>Work Zone Related</td>
+                        <td>Pedestrian Involved</td>
+                        <td>Bicyclist Involved</td>
+                        <td>Motorcycle Invovled</td>
+                        <td>Improper Restraint</td>
+                        <td>Unrestrained</td>
+                        <td>DUI</td>
+                        <td>Intersection Related</td>
+                        <td>Wild Animal Related</td>
+                        <td>Domestic Animal Related</td>
+                        <td>Overturn Rollover</td>
+                        <td>Commercial Motor Vehicle Involved</td>
+                        <td>Teenage Driver Involved</td>
+                        <td>Older Driver Involved</td>
+                        <td>Night Dark Condition</td>
+                        <td>Single Vehicle</td>
+                        <td>Distracted Driving</td>
+                        <td>Drowsy Driving</td>
+                        <td>Roadway Departure</td>
 
-
-                        <td><a asp-controller="Home" asp-action="Edit">Edit</a></td> <!-- add "asp-route-collisionid="c.collisionID"" in route -->
-                        <td><a asp-controller="Home" asp-action="Delete">Delete</a></td> <!-- add "asp-route-collisionid="c.collisionID"" in route -->
-
+                        <td>Edit</td>
+                        <td>Delete</td>
                     </tr>
-                }
+                </thead>
 
-            </tbody>
-        </table>
+
+                <tbody>
+                    @foreach (var c in Model.Utah_Crash_Data_2020)
+                    {
+
+                        <tr>
+                            <td>@c.CRASH_DATETIME</td>
+                            <td>@c.ROUTE</td>
+                            <td>@c.MILEPOINT</td>
+                            <td>@c.LAT_UTM_Y</td>
+                            <td>@c.LONG_UTM_X</td>
+                            <td>@c.MAIN_ROAD_NAME</td>
+                            <td>@c.CITY</td>
+                            <td>@c.COUNTY_NAME</td>
+                            <td>@c.CRASH_SEVERITY_ID</td>
+                            <td>@c.WORK_ZONE_RELATED</td>
+                            <td>@c.PEDESTRIAN_INVOLVED</td>
+                            <td>@c.BICYCLIST_INVOLVED</td>
+                            <td>@c.MOTORCYCLE_INVOLVED</td>
+                            <td>@c.IMPROPER_RESTRAINT</td>
+                            <td>@c.UNRESTRAINED</td>
+                            <td>@c.DUI</td>
+                            <td>@c.INTERSECTION_RELATED</td>
+                            <td>@c.WILD_ANIMAL_RELATED</td>
+                            <td>@c.DOMESTIC_ANIMAL_RELATED</td>
+                            <td>@c.OVERTURN_ROLLOVER</td>
+                            <td>@c.COMMERCIAL_MOTOR_VEH_INVOLVED</td>
+                            <td>@c.TEENAGE_DRIVER_INVOLVED</td>
+                            <td>@c.OLDER_DRIVER_INVOLVED</td>
+                            <td>@c.NIGHT_DARK_CONDITION</td>
+                            <td>@c.SINGLE_VEHICLE</td>
+                            <td>@c.DISTRACTED_DRIVING</td>
+                            <td>@c.DROWSY_DRIVING</td>
+                            <td>@c.ROADWAY_DEPARTURE</td>
+
+
+                            <td><a asp-controller="Home" asp-action="EditCollision" asp-route-collisionid="@c.CRASH_ID">Edit</a></td>
+                            <td><a asp-controller="Home" asp-action="DeleteCollision" asp-route-collisionid="@c.CRASH_ID">Delete</a></td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 <div page-model="@Model.PageInfo" page-action="SummaryData" page-classes-enabled="true"
      page-class="btn" page-class-normal="btn-outline-dark"
