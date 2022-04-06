@@ -315,7 +315,7 @@
             <h2 style="color: #9e1b32;">Please Confirm</h2>
             <p>Are you sure you would like to complete the following action with item: @Model.CRASH_ID ?</p>
             <div>
-                <form method="post">
+                <form method="post" asp-action="Confirmation">
 
                     <div asp-validation-summary="All"></div>
                     <input asp-for="CRASH_ID" type="hidden" />

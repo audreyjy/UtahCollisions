@@ -261,7 +261,7 @@ namespace UtahCollisions.Controllers
             var crash = utahCollisions.Utah_Crash_Data_2020.Single(x => x.CRASH_ID == collisionid);
 
 
-            return View("ConfirmDelete", crash);
+            return View("DeleteConfirmation", crash);
         }
 
         [HttpPost]
@@ -281,16 +281,6 @@ namespace UtahCollisions.Controllers
         public IActionResult Confirmation(Collision c)
         {
             utahCollisions.Add(c);
-            utahCollisions.SaveChanges();
-
-            return RedirectToAction("SummaryData");
-        }
-        // /////////////////////////////////////////////////////////////////////////////////
-        // CONFIRM DELETEPAGE /////////////////////////////////////////////////
-        [HttpPost]
-        public IActionResult ConfirmDelete(Collision c)
-        {
-            utahCollisions.Utah_Crash_Data_2020.Remove(c);
             utahCollisions.SaveChanges();
 
             return RedirectToAction("SummaryData");
