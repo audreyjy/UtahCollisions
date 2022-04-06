@@ -9,8 +9,33 @@
 
 <div class="row m-1 p-1">
     <div class="col-3">
+        <p style="text-align:center">
+            <table style="width:200px;" class="table table-bordered table-striped">
+                <thead class="font-weight-bold">
+                    <tr style="width:200px">Severity Scale</tr>
+                    <tr style="width:200px">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr style="width:200px">
+                        <td style="color:lightsteelblue; font:small-caption;">No Injury</td>
+                        <td style="color:gainsboro; font:small-caption">Possible Injury</td>
+                        <td style="color:burlywood; font:small-caption;">Suspected Minor Injury</td>
+                        <td style="color:lightcoral; font:small-caption;">Suspected Serious Injury</td>
+                        <td style="color:darkred; font:small-caption;">Fatal</td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
         <p style="text-align:center"><vc:severity></vc:severity></p>
         <p style="text-align:center"><vc:city></vc:city></p>
+        <a class="btn btn-primary btn-lg" asp-controller="Home" asp-action="AddCollision">Add Accident</a>
     </div>
 
     <div class="col-9 scroll"  style="border: solid grey; border-radius: 10px;">
@@ -27,110 +52,142 @@
                     <td>City</td>
                     <td>County</td>
                     <td>Crash Severity</td>
-                    <td>Work Zone Related</td>
-                    <td>Pedestrian Involved</td>
-                    <td>Bicyclist Involved</td>
-                    <td>Motorcycle Invovled</td>
-                    <td>Improper Restraint</td>
-                    <td>Unrestrained</td>
-                    <td>DUI</td>
-                    <td>Intersection Related</td>
-                    <td>Wild Animal Related</td>
-                    <td>Domestic Animal Related</td>
-                    <td>Overturn Rollover</td>
-                    <td>Commercial Motor Vehicle Involved</td>
-                    <td>Teenage Driver Involved</td>
-                    <td>Older Driver Involved</td>
-                    <td>Night Dark Condition</td>
-                    <td>Single Vehicle</td>
-                    <td>Distracted Driving</td>
-                    <td>Drowsy Driving</td>
-                    <td>Roadway Departure</td>
+                    <td>Collision Details</td>
+
+                    <td>Edit</td>
+                    <td>Delete</td>
 
 
-        <div class="col-9 scroll" style="border: solid #1F305E; border-radius: 10px;">
-            <a class="btn btn-primary btn-lg" asp-controller="Home" asp-action="AddCollision">Add Accident</a>
-            <h1> Viewbag . something will go here to dynamically change title </h1>
-            <table class="table table-bordered table-striped">
-                <thead class="font-weight-bold">
+            <tbody>
+                @foreach (var c in Model.Utah_Crash_Data_2020)
+                {
                     <tr>
-                        <td>Date</td>
-                        <td>Route</td>
-                        <td>Milepoint</td>
-                        <td>Latitude</td>
-                        <td>Longitude</td>
-                        <td>Main Road Name</td>
-                        <td>City</td>
-                        <td>County</td>
-                        <td>Crash Severity</td>
-                        <td>Work Zone Related</td>
-                        <td>Pedestrian Involved</td>
-                        <td>Bicyclist Involved</td>
-                        <td>Motorcycle Invovled</td>
-                        <td>Improper Restraint</td>
-                        <td>Unrestrained</td>
-                        <td>DUI</td>
-                        <td>Intersection Related</td>
-                        <td>Wild Animal Related</td>
-                        <td>Domestic Animal Related</td>
-                        <td>Overturn Rollover</td>
-                        <td>Commercial Motor Vehicle Involved</td>
-                        <td>Teenage Driver Involved</td>
-                        <td>Older Driver Involved</td>
-                        <td>Night Dark Condition</td>
-                        <td>Single Vehicle</td>
-                        <td>Distracted Driving</td>
-                        <td>Drowsy Driving</td>
-                        <td>Roadway Departure</td>
+                        <td>@c.CRASH_DATETIME</td>
+                        <td>@c.ROUTE</td>
+                        <td>@c.MILEPOINT</td>
+                        <td>@c.LAT_UTM_Y</td>
+                        <td>@c.LONG_UTM_X</td>
+                        <td>@c.MAIN_ROAD_NAME</td>
+                        <td>@c.CITY</td>
+                        <td>@c.COUNTY_NAME</td>
+                        <td>@c.CRASH_SEVERITY_ID</td>
 
-                        <td>Edit</td>
-                        <td>Delete</td>
+
+                        <td>
+                            <ul>
+                                @if (@c.WORK_ZONE_RELATED.ToString() == "true")
+                                {
+                                    <li>Work Zone Related </li>
+                                    ;
+                                }
+
+                                @if (c.PEDESTRIAN_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Pedestrian Involved</li>
+                                    ;
+                                }
+
+                                @if (c.BICYCLIST_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Bicyclist Involved</li>
+                                    ;
+                                }
+                                @if (c.MOTORCYCLE_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Motorcycle Involved</li>
+                                    ;
+                                }
+
+                                @if (c.IMPROPER_RESTRAINT.ToString() == "true")
+                                {
+                                    <li>Improper Restraint</li>
+                                    ;
+                                }
+
+                                @if (c.UNRESTRAINED.ToString() == "true")
+                                {
+                                    <li>Unrestrained</li>
+                                    ;
+                                }
+
+                                @if (c.DUI.ToString() == "true")
+                                {
+                                    <li>DUI</li>
+                                    ;
+                                }
+
+                                @if (c.INTERSECTION_RELATED.ToString() == "true")
+                                {
+                                    <li>Intersection Related</li>
+                                    ;
+                                }
+
+                                @if (c.WILD_ANIMAL_RELATED.ToString() == "true")
+                                {
+                                    <li>Wild Animal Related</li>
+                                    ;
+                                }
+                                @if (c.DOMESTIC_ANIMAL_RELATED.ToString() == "true")
+                                {
+                                    <li>Domestic Animal Related</li>
+                                    ;
+                                }
+                                @if (c.OVERTURN_ROLLOVER.ToString() == "true")
+                                {
+                                    <li>Overturn Rollover</li>
+                                    ;
+                                }
+                                @if (c.COMMERCIAL_MOTOR_VEH_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Commercial Motor Vehicle Involved</li>
+                                    ;
+                                }
+                                @if (c.TEENAGE_DRIVER_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Teenage Driver Involved</li>
+                                    ;
+                                }
+                                @if (c.OLDER_DRIVER_INVOLVED.ToString() == "true")
+                                {
+                                    <li>Older Driver Involved</li>
+                                    ;
+                                }
+                                @if (c.NIGHT_DARK_CONDITION.ToString() == "true")
+                                {
+                                    <li>Night Dark Condition</li>
+                                    ;
+                                }
+                                @if (c.SINGLE_VEHICLE.ToString() == "true")
+                                {
+                                    <li>Single Vehicle</li>
+                                    ;
+                                }
+                                @if (c.DISTRACTED_DRIVING.ToString() == "true")
+                                {
+                                    <li>Distracted Driving</li>
+                                    ;
+                                }
+                                @if (c.DROWSY_DRIVING.ToString() == "true")
+                                {
+                                    <li>Drowsy Driving</li>
+                                    ;
+                                }
+                                @if (c.ROADWAY_DEPARTURE.ToString() == "true")
+                                {
+                                    <li>Roadway Departure</li>
+                                    ;
+                                }
+                            </ul>
+                        </td>
+
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-collisionid="@c.CRASH_ID"></a>Edit</td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-collisionid="@c.CRASH_ID"></a>Delete</td>
+
                     </tr>
-                </thead>
+                }
 
 
-                <tbody>
-                    @foreach (var c in Model.Utah_Crash_Data_2020)
-                    {
-
-                        <tr>
-                            <td>@c.CRASH_DATETIME</td>
-                            <td>@c.ROUTE</td>
-                            <td>@c.MILEPOINT</td>
-                            <td>@c.LAT_UTM_Y</td>
-                            <td>@c.LONG_UTM_X</td>
-                            <td>@c.MAIN_ROAD_NAME</td>
-                            <td>@c.CITY</td>
-                            <td>@c.COUNTY_NAME</td>
-                            <td>@c.CRASH_SEVERITY_ID</td>
-                            <td>@c.WORK_ZONE_RELATED</td>
-                            <td>@c.PEDESTRIAN_INVOLVED</td>
-                            <td>@c.BICYCLIST_INVOLVED</td>
-                            <td>@c.MOTORCYCLE_INVOLVED</td>
-                            <td>@c.IMPROPER_RESTRAINT</td>
-                            <td>@c.UNRESTRAINED</td>
-                            <td>@c.DUI</td>
-                            <td>@c.INTERSECTION_RELATED</td>
-                            <td>@c.WILD_ANIMAL_RELATED</td>
-                            <td>@c.DOMESTIC_ANIMAL_RELATED</td>
-                            <td>@c.OVERTURN_ROLLOVER</td>
-                            <td>@c.COMMERCIAL_MOTOR_VEH_INVOLVED</td>
-                            <td>@c.TEENAGE_DRIVER_INVOLVED</td>
-                            <td>@c.OLDER_DRIVER_INVOLVED</td>
-                            <td>@c.NIGHT_DARK_CONDITION</td>
-                            <td>@c.SINGLE_VEHICLE</td>
-                            <td>@c.DISTRACTED_DRIVING</td>
-                            <td>@c.DROWSY_DRIVING</td>
-                            <td>@c.ROADWAY_DEPARTURE</td>
-
-
-                            <td><a asp-controller="Home" asp-action="EditCollision" asp-route-collisionid="@c.CRASH_ID">Edit</a></td>
-                            <td><a asp-controller="Home" asp-action="DeleteCollision" asp-route-collisionid="@c.CRASH_ID">Delete</a></td>
-
-                        </tr>
-                    }
-
-                </tbody>
+            </tbody>
             </table>
         </div>
     </div>
