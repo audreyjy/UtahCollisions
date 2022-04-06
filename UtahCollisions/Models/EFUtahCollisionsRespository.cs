@@ -14,5 +14,24 @@ namespace UtahCollisions.Models
             context = temp; 
         }
         public IQueryable<Collision> Utah_Crash_Data_2020 => context.Utah_Crash_Data_2020; // need to connect to the DB for this to work 
+
+
+        public void SaveCrash(Collision c)
+        {
+            context.SaveChanges();
+        }
+
+        public void CreateCrash(Collision c)
+        {
+            context.Add(c);
+            context.SaveChanges();
+        }
+
+        public void DeleteCrash(Collision c)
+        {
+            context.Remove(c);
+            context.SaveChanges();
+        }
+
     }
 }
