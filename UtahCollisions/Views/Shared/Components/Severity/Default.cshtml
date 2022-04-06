@@ -1,0 +1,29 @@
+﻿
+@{
+}
+
+@model IQueryable<string>
+
+<div class="d-grid gap-2">
+
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter by Severity <i class="icofont-thin-down"></i></a>
+        <ul class="dropdown-menu" aria-labelledby="dropdown02">
+
+            @foreach (string c in Model)
+            {
+                <li><a asp-controller="Home" asp-action="SummaryData" asp-route-severityID="@c" 
+                       class="dropdown-item">@c</a></li>
+            }
+
+        </ul>
+    </div>
+
+
+    
+    @*@foreach (string c in Model) // this is in case I need it as a button but probably won't
+    {
+        <a asp-controller="Home" asp-action="SummaryData" asp-route-severityID="@c"
+           class="btn btn-block @(ViewBag.SelectedType == c ? "btn-primary focus " : "btn btn-outline-secondary btn-focus")">@c</a>
+    }*@
+</div> 
