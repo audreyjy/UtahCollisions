@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,16 @@ namespace UtahCollisions.Components
     public class CityViewComponent : ViewComponent
     {
         // get data for component here 
-        private iUtahCollisionRepository repo { get; set; }
-
-        //Contructor
-        public CityViewComponent(iUtahCollisionRepository temp)
+        private iUtahCollisionRepository repo;
+        private SignInManager<IdentityUser> signInManager;
+        private UserManager<IdentityUser> userManager;
+        private UtahCollisionsContext utahCollisions;
+        public CityViewComponent(iUtahCollisionRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim, UtahCollisionsContext UCC)
         {
             repo = temp;
+            userManager = um;
+            signInManager = sim;
+            utahCollisions = UCC;
         }
 
 

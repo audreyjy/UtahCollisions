@@ -12,35 +12,65 @@
     <form method="post">
 
         <div asp-validation-summary="All"></div>
+        <label asp-for="CRASH_ID"></label>
         <input asp-for="CRASH_ID" type="hidden" />
+        <label asp-for="CRASH_DATETIME"></label>
         <input asp-for="CRASH_DATETIME" type="hidden" />
+        <label asp-for="ROUTE"></label>
         <input asp-for="ROUTE" type="hidden" />
+        <label asp-for="MILEPOINT"></label>
         <input asp-for="MILEPOINT" type="hidden" />
+        <label asp-for="LAT_UTM_Y"></label>
         <input asp-for="LAT_UTM_Y" type="hidden" />
+        <label asp-for="LONG_UTM_X"></label>
         <input asp-for="LONG_UTM_X" type="hidden" />
+        <label asp-for="MAIN_ROAD_NAME"></label>
         <input asp-for="MAIN_ROAD_NAME" type="hidden" />
+        <label asp-for="CITY"></label>
         <input asp-for="CITY" type="hidden" />
+        <label asp-for="COUNTY_NAME"></label>
         <input asp-for="COUNTY_NAME" type="hidden" />
+        <label asp-for="CRASH_SEVERITY_ID"></label>
         <input asp-for="CRASH_SEVERITY_ID" type="hidden" />
+        <label asp-for="WORK_ZONE_RELATED"></label>
         <input asp-for="WORK_ZONE_RELATED" type="hidden" />
+        <label asp-for="PEDESTRIAN_INVOLVED"></label>
         <input asp-for="PEDESTRIAN_INVOLVED" type="hidden" />
+        <label asp-for="BICYCLIST_INVOLVED"></label>
         <input asp-for="BICYCLIST_INVOLVED" type="hidden" />
+        <label asp-for="MOTORCYCLE_INVOLVED"></label>
         <input asp-for="MOTORCYCLE_INVOLVED" type="hidden" />
+        <label asp-for="IMPROPER_RESTRAINT"></label>
         <input asp-for="IMPROPER_RESTRAINT" type="hidden" />
+        <label asp-for="UNRESTRAINED"></label>
         <input asp-for="UNRESTRAINED" type="hidden" />
+        <label asp-for="DUI"></label>
         <input asp-for="DUI" type="hidden" />
+        <label asp-for="INTERSECTION_RELATED"></label>
         <input asp-for="INTERSECTION_RELATED" type="hidden" />
+        <label asp-for="WILD_ANIMAL_RELATED"></label>
         <input asp-for="WILD_ANIMAL_RELATED" type="hidden" />
+        <label asp-for="DOMESTIC_ANIMAL_RELATED"></label>
         <input asp-for="DOMESTIC_ANIMAL_RELATED" type="hidden" />
+        <label asp-for="OVERTURN_ROLLOVER"></label>
         <input asp-for="OVERTURN_ROLLOVER" type="hidden" />
+        <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED"></label>
         <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="hidden" />
+        <label asp-for="TEENAGE_DRIVER_INVOLVED"></label>
         <input asp-for="TEENAGE_DRIVER_INVOLVED" type="hidden" />
+        <label asp-for="OLDER_DRIVER_INVOLVED"></label>
         <input asp-for="OLDER_DRIVER_INVOLVED" type="hidden" />
+        <label asp-for="NIGHT_DARK_CONDITION"></label>
         <input asp-for="NIGHT_DARK_CONDITION" type="hidden" />
+        <label asp-for="SINGLE_VEHICLE"></label>
         <input asp-for="SINGLE_VEHICLE" type="hidden" />
+        <label asp-for="DISTRACTED_DRIVING"></label>
         <input asp-for="DISTRACTED_DRIVING" type="hidden" />
+        <label asp-for="DROWSY_DRIVING"></label>
         <input asp-for="DROWSY_DRIVING" type="hidden" />
+        <label asp-for="ROADWAY_DEPARTURE"></label>
         <input asp-for="ROADWAY_DEPARTURE" type="hidden" />
+
 
 
         <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="SummaryData" type="button">Back</a>

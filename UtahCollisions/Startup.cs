@@ -62,7 +62,7 @@ namespace UtahCollisions
             services.ConfigureApplicationCookie(config =>
             {
                 config.Cookie.Name = "Yeet.Cookie";
-                config.LoginPath = "/Home/Login";
+                config.LoginPath = "/Home/LoginTest";
             });
         }
 
