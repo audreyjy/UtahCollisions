@@ -256,37 +256,44 @@ namespace UtahCollisions.Controllers
             return View("SummaryData");
         }
 
-
-
-        //[HttpGet]
-        //public IActionResult Login(string returnURL)
-        //{
-        //    //return View(new LoginModel { returnURL = returnURL });
-        //    return View();
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> Login(LoginModel loginmodel)
-        //{
-        //    if( ModelState.IsValid )
-        //    {
-        //        IdentityUser user = await userManager.FindByNameAsync(loginmodel.Username);
-
-        //        if (user != null)
-        //        {
-        //            await signInManager.SignOutAsync();
-
-        //            if((await signInManager.PasswordSignInAsync(user, loginmodel.Password, false, false)).Succeeded)
-        //            {
-        //                //return Redirect(loginmodel ? returnURL ?? "/Admin");
-        //                return RedirectToAction("SummaryData");
-        //            }
-        //        }
-        //    }
-
-        //    ModelState.AddModelError("", "Invalid Name or Password");
-        //    return View(loginmodel);
-            
-        //}
-
+    public async Task<IActionResult> LogOut()
+    {
+        await signInManager.SignOutAsync();
+        return RedirectToAction("Index");
     }
+
+
+
+
+    //[HttpGet]
+    //public IActionResult Login(string returnURL)
+    //{
+    //    //return View(new LoginModel { returnURL = returnURL });
+    //    return View();
+    //}
+    //[HttpPost]
+    //public async Task<IActionResult> Login(LoginModel loginmodel)
+    //{
+    //    if( ModelState.IsValid )
+    //    {
+    //        IdentityUser user = await userManager.FindByNameAsync(loginmodel.Username);
+
+    //        if (user != null)
+    //        {
+    //            await signInManager.SignOutAsync();
+
+    //            if((await signInManager.PasswordSignInAsync(user, loginmodel.Password, false, false)).Succeeded)
+    //            {
+    //                //return Redirect(loginmodel ? returnURL ?? "/Admin");
+    //                return RedirectToAction("SummaryData");
+    //            }
+    //        }
+    //    }
+
+    //    ModelState.AddModelError("", "Invalid Name or Password");
+    //    return View(loginmodel);
+
+    //}
+
+}
 }
