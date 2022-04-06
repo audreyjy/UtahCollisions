@@ -33,7 +33,7 @@ namespace UtahCollisions.Controllers
         }
 
         // GET SummaryData for Authenticated Users
-        [Authorize] 
+        [Authorize]
         public IActionResult SummaryData(string city, string severityID, int pageNum = 1)
         {
             int pageSize = 100;
@@ -44,11 +44,11 @@ namespace UtahCollisions.Controllers
             }
             else if (city is null && severityID != null)
             {
-                ViewBag.Header = "Level " + severityID + " Severity Collision Records"; 
+                ViewBag.Header = "Level " + severityID + " Severity Collision Records";
             }
             else if (city != null)
             {
-                ViewBag.Header = city + " City Collision Records"; 
+                ViewBag.Header = city + " City Collision Records";
             }
 
             var x = new CollisionsViewModel
@@ -57,7 +57,6 @@ namespace UtahCollisions.Controllers
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
                 .Where(x => x.CRASH_SEVERITY_ID.ToString() == severityID || severityID == null)
                 .Where(x => x.CITY == city || city == null)
-                .OrderBy(x => x.CRASH_ID)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
@@ -68,9 +67,9 @@ namespace UtahCollisions.Controllers
                     CurrentPage = pageNum
                 }
 
-            }; 
+            };
 
-            return View(x); 
+            return View(x);
         }
 
         // GET Summary Data for Non-Authenticated Users
@@ -117,25 +116,23 @@ namespace UtahCollisions.Controllers
             return View();
         }
 
+
+        //[HttpGet]
+        //public IActionResult Login()
+        //{
+        //    return View();
+        //}
+
+        // GET Login 
+
         [HttpGet]
         public IActionResult LoginTest()
         {
             return View();
         }
 
-     
 
-
-
-
-
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        // this controller will only let you move forward if you successfully log in, then route to the next page
+        // POST Login
         [HttpPost]
         public async Task<IActionResult> LoginTest(string username, string password)
         {
@@ -155,11 +152,15 @@ namespace UtahCollisions.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET Register
+
         [HttpGet]
         public IActionResult RegisterTest()
         {
             return View();
         }
+
+        // POST Register
 
         [HttpPost] 
         public async Task<IActionResult> RegisterTest(string username, string password)
@@ -212,7 +213,7 @@ namespace UtahCollisions.Controllers
             }
         }
 
-
+        [Authorize]
         [HttpGet]
         public IActionResult EditCollision (string collisionid)
         {
@@ -254,11 +255,11 @@ namespace UtahCollisions.Controllers
             return View("SummaryData");
         }
 
-    public async Task<IActionResult> LogOut()
-    {
-        await signInManager.SignOutAsync();
-        return RedirectToAction("Index");
-    }
+        public async Task<IActionResult> LogOut()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index");
+        }
 
 
 
