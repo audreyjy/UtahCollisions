@@ -1,11 +1,373 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
 
-<form asp-controller="Home" asp-action="RegisterTest" method="post">
+@*<form asp-controller="Home" asp-action="RegisterTest" method="post">
     <input type="text" name="username" value="" />
     <input type="text" name="password" value="" />
     <button type="submit">Register</button>
-</form>
+</form>*@
+
+
+@{
+    Layout = null;
+}
+
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
+    <meta name="author" content="themefisher.com">
+
+    <title>Login</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+
+    <!-- bootstrap.min css -->
+    <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Icon Font Css -->
+    <link href="~/plugins/icofont/icofont.min.css" rel="stylesheet" />
+    <!-- Slick Slider  CSS -->
+    <link href="~/plugins/slick-carousel/slick/slick.css" rel="stylesheet" />
+    <link href="~/plugins/slick-carousel/slick/slick-theme.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet -->
+    <link href="~/css/style.css" rel="stylesheet" />
+
+    <!--SCROLL BAR TABLE-->
+    <!--Table with scroll bars-->
+    <style>
+        .scroll {
+            border: none;
+            padding: 5px;
+            font: 11px/12px sans-serif;
+            width: 600px;
+            height: 900px;
+            overflow: scroll;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            border: 1px solid grey;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #eec0c6;
+            background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
+            /*background: #6699CC;*/
+            border-radius: 10px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #00BFFF;
+            }
+
+        /*CSS FOR FORM*/
+        html * {
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #FFFAFA;
+            padding: 0;
+            margin: 0;
+        }
+
+        .login-box {
+            background-color: #B9D9EB;
+            /*background-color: #eec0c6;
+            background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);*/
+            padding: 20px;
+            max-width: 480px;
+            margin: 25vh auto;
+            text-align: center;
+            letter-spacing: 1px;
+            position: relative;
+            border-radius: 10px;
+        }
+
+            .login-box:hover {
+                box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            }
+
+            .login-box h2 {
+                margin: 20px 0 20px;
+                padding: 0;
+                text-transform: uppercase;
+                color: #4688F1;
+            }
+
+        .social-button {
+            background-position: 25px 0px;
+            box-sizing: border-box;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            display: inline-block;
+            height: 50px;
+            line-height: 50px;
+            text-align: left;
+            text-decoration: none;
+            text-transform: uppercase;
+            vertical-align: middle;
+            width: 100%;
+            border-radius: 3px;
+            margin: 10px auto;
+            outline: rgb(255, 255, 255) none 0px;
+            padding-left: 20%;
+            transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+        #facebook-connect {
+            background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook.svg?sanitize=true') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+            border: 1px solid rgb(60, 90, 154);
+        }
+
+            #facebook-connect:hover {
+                border-color: rgb(60, 90, 154);
+                background: rgb(60, 90, 154) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook-white.svg?sanitize=true') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+                -webkit-transition: all .8s ease-out;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease-out;
+            }
+
+            #facebook-connect span {
+                box-sizing: border-box;
+                color: rgb(60, 90, 154);
+                cursor: pointer;
+                text-align: center;
+                text-transform: uppercase;
+                border: 0px none rgb(255, 255, 255);
+                outline: rgb(255, 255, 255) none 0px;
+                -webkit-transition: all .3s ease;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+
+            #facebook-connect:hover span {
+                color: #FFF;
+                -webkit-transition: all .3s ease;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+
+        #google-connect {
+            background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+            border: 1px solid rgb(220, 74, 61);
+        }
+
+            #google-connect:hover {
+                border-color: rgb(220, 74, 61);
+                background: rgb(220, 74, 61) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus-white.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+                -webkit-transition: all .8s ease-out;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease-out;
+            }
+
+            #google-connect span {
+                box-sizing: border-box;
+                color: rgb(220, 74, 61);
+                cursor: pointer;
+                text-align: center;
+                text-transform: uppercase;
+                border: 0px none rgb(220, 74, 61);
+                outline: rgb(255, 255, 255) none 0px;
+                -webkit-transition: all .3s ease;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+
+            #google-connect:hover span {
+                color: #FFF;
+                -webkit-transition: all .3s ease;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+
+        #twitter-connect {
+            background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/twitter.png') no-repeat scroll 5px 1px / 45px 45px padding-box border-box;
+            border: 1px solid rgb(85, 172, 238);
+        }
+
+            #twitter-connect:hover {
+                border-color: rgb(85, 172, 238);
+                background: rgb(85, 172, 238) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/twitter-white.png') no-repeat scroll 5px 1px / 45px 45px padding-box border-box;
+                -webkit-transition: all .8s ease-out;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease-out;
+            }
+
+            #twitter-connect span {
+                box-sizing: border-box;
+                color: rgb(85, 172, 238);
+                cursor: pointer;
+                text-align: center;
+                text-transform: uppercase;
+                border: 0px none rgb(220, 74, 61);
+                outline: rgb(255, 255, 255) none 0px;
+                -webkit-transition: all .3s ease;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+
+            #twitter-connect:hover span {
+                color: #FFF;
+                -webkit-transition: all .3s ease;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+
+        #linkedin-connect {
+            background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/linkedin.svg?sanitize=true') no-repeat scroll 13px 0px / 28px 45px padding-box border-box;
+            border: 1px solid rgb(0, 119, 181);
+        }
+
+            #linkedin-connect:hover {
+                border-color: rgb(0, 119, 181);
+                background: rgb(0, 119, 181) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/linkedin-white.svg?sanitize=true') no-repeat scroll 13px 0px / 28px 45px padding-box border-box;
+                -webkit-transition: all .8s ease-out;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease-out;
+            }
+
+            #linkedin-connect span {
+                box-sizing: border-box;
+                color: rgb(0, 119, 181);
+                cursor: pointer;
+                text-align: center;
+                text-transform: uppercase;
+                border: 0px none rgb(0, 119, 181);
+                outline: rgb(255, 255, 255) none 0px;
+                -webkit-transition: all .3s ease;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+
+            #linkedin-connect:hover span {
+                color: #FFF;
+                -webkit-transition: all .3s ease;
+                -moz-transition: all .3s ease;
+                -ms-transition: all .3s ease;
+                -o-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+        /*------------*/
+    </style>
+
+</head>
+
+
+<body>
+    <header>
+        <div class="header-top-bar">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <ul class="top-bar-info list-inline-item pl-0 mb-0">
+                            <li class="list-inline-item"><a href="contactudot@utah.gov"><i class="icofont-support-faq mr-2"></i>contactudot@utah.gov</a></li>
+                            <li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>2060 S 2760 W, Salt Lake City, UT 84104</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="text-lg-right top-right-bar mt-2 mt-lg-0">
+
+                            <a class="btn btn-main btn-round-full" asp-controller="Home" asp-action="Index" style="background-color: #eec0c6; background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%); color: #002D62; ">Home</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </header>
+    <!---//////////////////////////////////////-->
+    <div class="login-box">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                <img src="~/images/logo.png" alt="" class="img-fluid" style="width: 150px; border-radius: 20px;">
+            </a>
+        </div>
+        <div class="m-1 p-1">
+            <div class="text-danger" asp-validation-summary="All"></div>
+
+
+
+            <form asp-controller="Home" asp-action="RegisterTest" method="post">
+                <div class="form-group">
+                    <label>Username: </label>
+                    <input type="text" name="username" value="" />
+                </div>
+
+                <div class="form-group">
+                    <label>Password: </label>
+                    <input type="password" name="password" value="" />
+                </div>
+
+                <button class="btn btn-primary btn-block" type="submit">Log In</button>
+            </form>
+
+
+
+            @*<form method="post">
+                    <div class="form-group">
+                        <label asp-for="Username">Username: </label>
+                        <input asp-for="Username" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password">Password: </label>
+                        <input asp-for="Password" class="form-control" />
+                    </div>
+
+                    <button class="btn btn-primary btn-block" type="submit">Log In</button>
+
+                    <input type="hidden" asp-for="returnURL" />
+                </form>*@
+
+        </div>
+        <a href="#" class="social-button" id="google-connect"> <span>Connect with Google</span></a>
+    </div>
+
+    <!--//////////////////////////////////////////-->
+
+
+</body>
+
+
+</html>
+
+
