@@ -252,7 +252,7 @@ namespace UtahCollisions.Controllers
             utahCollisions.Update(c);
             utahCollisions.SaveChanges();
 
-            return View("SummaryData");
+            return RedirectToAction("SummaryData");
         }
 
         public async Task<IActionResult> LogOut()
