@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Prediction";
+}
+
+@model CrashMLData
+
+<form method="post" asp-controller="Inference" asp-action="Score">
+
+    <div><label>Mile Point</label><input asp-for="MilePoint" value="" /></div>
+    <div><label>Latitude Number</label><input asp-for="Latitude" value="" /></div>
+    <div><label>Longitude Number</label><input asp-for="Longitude" value="" /></div>
+    <div><label>Day of the Month</label><input asp-for="Day" value="" /></div>
+    <div><label>Month</label><input asp-for="Month" value="" /></div>
+    <div><label>Hour of the Day</label><input asp-for="Hour" value="" /></div>
+
+    <button type="submit">Calculate Crash Severity</button>
+</form>
+
