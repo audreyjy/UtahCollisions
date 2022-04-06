@@ -3,13 +3,26 @@
 }
 
 
-@model UtahCollisions.Models.Collision;
-
+@model Collision
 
 <h2>Please Confirm</h2>
 <p>Are you sure you would like to complete the following action with item: @Model.CRASH_ID ?</p>
+
+
+<!--<form method="post" asp-action="Delete">
+
+    <button type="submit" class="btn">Delete</button>
+    <a asp-controller="Home" asp-action="AllMovies" class="btn btn-primary">Cancel</a>-->
+
+    @* need this hidden input to pass movie id so deletion can occur *@
+    <!--<input type="hidden" asp-for="MovieId" />
+
+</form>-->
+
+
+
 <div>
-    <form method="post" asp-action="Confirmation">
+    <form method="post" asp-action="DeleteCollision">
 
         <div asp-validation-summary="All"></div>
         <label asp-for="CRASH_ID"></label>
