@@ -1,4 +1,5 @@
 ﻿@{
+    Layout = null;
     ViewData["Title"] = "Collision Predictor";
 }
 
@@ -64,7 +65,7 @@
         /*CSS FOR FORM*/
         html * {
             font-family: 'Montserrat', sans-serif;
-            box-sizing: border-box;
+            /*box-sizing: border-box;*/
         }
 
         body {
@@ -83,10 +84,10 @@
             background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);*/
             padding: 20px;
             max-width: 480px;
-            margin: 25vh auto;
+            /*margin: 25vh auto;*/
             text-align: center;
             letter-spacing: 1px;
-            position: relative;
+            /*position: relative;*/
             border-radius: 10px;
         }
 
@@ -95,7 +96,7 @@
             }
 
             .login-box h2 {
-                margin: 20px 0 20px;
+                /*margin: 20px 0 20px;*/
                 padding: 0;
                 text-transform: uppercase;
                 color: #4688F1;
@@ -281,14 +282,57 @@
                 -o-transition: all .3s ease;
                 transition: all .3s ease;
             }
-        /*------------*/
+        /*------MAP CSS------*/
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+        #map {
+            height: 400px;
+            width: 400px;
+            border-radius: 10px;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
     </style>
 
 </head>
 
 
 <body>
-    <div class="login-box">
+
+    <header>
+        <div class="header-top-bar" style="height:80px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <ul class="top-bar-info list-inline-item pl-0 mb-0">
+                            <li class="list-inline-item"><a href="contactudot@utah.gov"><i class="icofont-support-faq mr-2"></i>contactudot@utah.gov</a></li>
+                            <li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>2060 S 2760 W, Salt Lake City, UT 84104</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <br />
+    @*<div class="container">*@
+    <div style="float: left; margin-top: 450px; margin-bottom: 50px; margin-left: 150px;">
+        @*<div class="col-3" style="float:left;">*@
+        <div id="map"></div>
+        @*</div>*@
+    </div>
+    @*</div>*@
+
+    @*<div class="container">
+        <div class="row">
+            <div class="col-9" style="float:right;">*@
+    <div class="login-box" style="float: right; margin-top: 50px; margin-bottom: 50px; margin-right: 450px;">
         <div class="container">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                 <img src="~/images/logo.png" alt="" class="img-fluid" style="width: 150px; border-radius: 20px;">
@@ -331,8 +375,46 @@
 
                 <button class="btn btn-primary btn-sm" type="submit">Calculate Crash Severity</button>
 
-            </form> 
+            </form>
         </div>
     </div>
+    @*</div>
+            </div>
+        </div>*@
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSf3KeQrtnZHAme5TZdiGlXpKYf4kl6eA&callback=initMap&v=weekly"
+            async>
+    </script>
+
+    <script>
+        function initMap() {
+            const myLatlng = { lat: 40.25028865490975, lng: -111.6479238761139 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 7,
+                center: myLatlng,
+            });
+            // Create the initial InfoWindow.
+            let infoWindow = new google.maps.InfoWindow({
+                content: "Click the map to get Lat/Lng!",
+                position: myLatlng,
+            });
+
+            infoWindow.open(map);
+            // Configure the click listener.
+            map.addListener("click", (mapsMouseEvent) => {
+                // Close the current InfoWindow.
+                infoWindow.close();
+                // Create a new InfoWindow.
+                infoWindow = new google.maps.InfoWindow({
+                    position: mapsMouseEvent.latLng,
+                });
+                infoWindow.setContent(
+                    JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+                );
+                infoWindow.open(map);
+            });
+        }
+    </script>
 </body>
 </html>
