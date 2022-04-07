@@ -61,7 +61,7 @@ namespace UtahCollisions.Controllers
             {
 
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
-                //.OrderBy(x => x.CRASH_ID)
+                .OrderBy(x => x.CRASH_ID)
                 .Where(x => x.CRASH_SEVERITY_ID.ToString() == adminseverityID || adminseverityID == null)
                 .Where(x => x.CITY == admincity || admincity == null)
                 .Skip((pageNum - 1) * pageSize)
