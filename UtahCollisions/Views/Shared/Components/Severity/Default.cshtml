@@ -12,7 +12,7 @@
 
             @foreach (string c in Model)
             {
-                <li><a asp-controller="Home" asp-action="SummaryData" asp-route-severityID="@c" 
+                <li><a asp-controller="Home" asp-action="SummaryDataNonAuth" asp-route-severityID="@c" 
                        class="dropdown-item">
                     @{  if (c == 1.ToString())
                         {

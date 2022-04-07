@@ -1,4 +1,6 @@
-﻿
+﻿@{
+}
+
 @model IQueryable<string>
 
 <div class="d-grid gap-2">
@@ -9,12 +11,13 @@
 
             @foreach (string c in Model)
             {
-            <li>
-                <a asp-controller="Home" asp-action="SummaryDataNonAuth" asp-route-city="@c"
-                   class="dropdown-item">@c</a>
-            </li>
+                <li>
+                    <a asp-controller="Home" asp-action="SummaryData" asp-route-admincity="@c"
+                       class="dropdown-item">@c</a>
+                </li>
             }
 
         </ul>
     </div>
 </div>
+
