@@ -1,6 +1,6 @@
 ﻿@{
     Layout = null;
-    ViewData["Title"] = "Collision Predictor";
+    
 }
 
 @model CrashMLData
@@ -12,12 +12,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
     <meta name="author" content="themefisher.com">
-
-    <title>Login</title>
-
+    
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/logo.PNG" />
     <!-- bootstrap.min css -->
     <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Icon Font Css -->
@@ -28,7 +25,7 @@
 
     <!-- Main Stylesheet -->
     <link href="~/css/style.css" rel="stylesheet" />
-
+    <title> UMVCA - Collision Predictor</title>
     <!--SCROLL BAR TABLE-->
     <!--Table with scroll bars-->
     <style>
@@ -318,7 +315,46 @@
                 </div>
             </div>
         </div>
+
     </header>
+    <nav class="navbar navbar-expand-lg navigation" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                <img src="~/images/logo.png" alt="" class="img-fluid" style="width: 150px; border-radius: 20px;">
+            </a>
+
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icofont-navigation-menu"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarmain">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="SummaryDataNonAuth">Collision Data</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="SummaryData">Admin</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Inference" asp-action="EnterData">Collision Predictor</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.utahsafetycouncil.org/ProductDetails.aspx?ProductID=777">Donate</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <br />
     @*<div class="container">*@
