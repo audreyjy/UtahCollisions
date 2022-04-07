@@ -249,7 +249,7 @@ namespace UtahCollisions.Controllers
 
             }
             
-            return RedirectToAction("Index");
+            return RedirectToAction("RegisterTest");
         }
 
 
@@ -355,40 +355,6 @@ namespace UtahCollisions.Controllers
         {
             return View();
         }
-
-
-
-        //[HttpGet]
-        //public IActionResult Login(string returnURL)
-        //{
-        //    //return View(new LoginModel { returnURL = returnURL });
-        //    return View();
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> Login(LoginModel loginmodel)
-        //{
-        //    if( ModelState.IsValid )
-        //    {
-        //        IdentityUser user = await userManager.FindByNameAsync(loginmodel.Username);
-
-        //        if (user != null)
-        //        {
-        //            await signInManager.SignOutAsync();
-
-        //            if((await signInManager.PasswordSignInAsync(user, loginmodel.Password, false, false)).Succeeded)
-        //            {
-        //                //return Redirect(loginmodel ? returnURL ?? "/Admin");
-        //                return RedirectToAction("SummaryData");
-        //            }
-        //        }
-        //    }
-
-        //    ModelState.AddModelError("", "Invalid Name or Password");
-        //    return View(loginmodel);
-
-        //}
-
-
 
     }
 }
