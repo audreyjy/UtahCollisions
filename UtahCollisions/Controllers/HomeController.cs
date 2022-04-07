@@ -249,7 +249,7 @@ namespace UtahCollisions.Controllers
 
             }
             
-            return RedirectToAction("Index");
+            return RedirectToAction("RegisterTest");
         }
 
 
