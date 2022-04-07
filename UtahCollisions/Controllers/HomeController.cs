@@ -61,7 +61,7 @@ namespace UtahCollisions.Controllers
             {
 
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
-                .OrderBy(x => x.CRASH_ID)
+                //.OrderBy(x => x.CRASH_ID)
                 .Where(x => x.CRASH_SEVERITY_ID.ToString() == severityID || severityID == null)
                 .Where(x => x.CITY == city || city == null)
                 .Skip((pageNum - 1) * pageSize)
@@ -103,10 +103,10 @@ namespace UtahCollisions.Controllers
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
                 .Where(x => x.CRASH_SEVERITY_ID.ToString() == severityID || severityID == null)
                 .Where(x => x.CITY == city || city == null)
-                .OrderBy(x => x.CRASH_ID)
+                //.OrderBy(x => x.CRASH_ID)
                 .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize)
-                ,
+                .Take(pageSize),
+                
 
                 PageInfo = new PageInfo
                 {
@@ -120,19 +120,13 @@ namespace UtahCollisions.Controllers
             return View(x);
         }
 
+        // GET PRIVACY POLICY VIEW 
         public IActionResult Privacy()
         {
             return View();
         }
 
-
-        //[HttpGet]
-        //public IActionResult Login()
-        //{
-        //    return View();
-        //}
-
-        // GET Login 
+        // GET LOGIN
 
         [HttpGet]
         public IActionResult LoginTest()
@@ -146,16 +140,6 @@ namespace UtahCollisions.Controllers
         public async Task<IActionResult> LoginTest(string username, string password)
         {
 
-            //var no2FA = await userManager.FindByNameAsync(username);
-
-            //if (no2FA != null)
-            //{
-            //    var signInResult = await signInManager.PasswordSignInAsync(no2FA, password, false, false);
-            //    if (signInResult.Succeeded)
-            //    {
-            //        return RedirectToAction("SummaryData");
-            //    }
-            //}
 
             var user = await userManager.FindByNameAsync(username);
             
@@ -189,11 +173,9 @@ namespace UtahCollisions.Controllers
             //Information to generate QR code: 
             TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
             string useruniquekey = Key;
-            //Session["Useruniquekey"] = useruniquekey;
             var user = User.ToString();
             var setupinfo = tfa.GenerateSetupCode("GoogleAuthentication test", user, useruniquekey, false, 20);
             ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
-
 
             return View(); 
         }
@@ -221,17 +203,17 @@ namespace UtahCollisions.Controllers
 
 
         
-        public IActionResult AdminQR()
-        {
-            TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
-            string useruniquekey = Key;
-            //Session["Useruniquekey"] = useruniquekey;
-            var user = User.ToString();  
-            var setupinfo = tfa.GenerateSetupCode("GoogleAuthentication test", user, useruniquekey, false, 20);
-            ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
+        //public IActionResult AdminQR()
+        //{
+        //    TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
+        //    string useruniquekey = Key;
+        //    //Session["Useruniquekey"] = useruniquekey;
+        //    var user = User.ToString();  
+        //    var setupinfo = tfa.GenerateSetupCode("GoogleAuthentication test", user, useruniquekey, false, 20);
+        //    ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
             
-            return View(); 
-        }
+        //    return View(); 
+        //}
         //
 
         // GET Register

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -70,11 +71,19 @@ namespace UtahCollisions
                 options.Password.RequiredUniqueChars = 1;
             });
 
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
             services.ConfigureApplicationCookie(config =>
             {
                 config.Cookie.Name = "Yeet.Cookie";
                 config.LoginPath = "/Home/LoginTest";
             });
+
+            
 
             //services.AddAuthorization(options =>
             //{
@@ -88,11 +97,11 @@ namespace UtahCollisions
             //        .RequireClaim()
             //       .Build();
 
-             //   config.DefaultPolicy = defaultAuthPolicy;
-               
+            //   config.DefaultPolicy = defaultAuthPolicy;
+
             //});
 
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -110,7 +119,7 @@ namespace UtahCollisions
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseCookiePolicy(); // for cookie consent 
             app.UseRouting();
 
             app.UseAuthentication(); // for authentication
