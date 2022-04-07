@@ -3,6 +3,7 @@
     Layout = null;
 }
 
+@model CrashMLData
 
 <!DOCTYPE html>
 <html>
@@ -11,33 +12,63 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <script src="./index.js"></script>
-    
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-        #map {
-            height: 400px;
-            width: 400px;
-            /*width: 77%;
-            position: absolute;
-            overflow: hidden;*/
-            
-        }
 
-        /* Optional: Makes the sample page fill the window. */
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
+    <style>
+         /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+         #map {
+             height: 400px;
+             width: 400px;
+             /*width: 77%;
+             position: absolute;
+             overflow: hidden;*/
+         }
+
+         /* Optional: Makes the sample page fill the window. */
+         html,
+         body {
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
     </style>
 </head>
 <body>
-    
-    <div>
-        <div id="map"></div>
-    </div>
+    <form>
+        <div>
+            <div id="map"></div>
+        </div>
+
+        <div>
+            <label>Mile Point</label>
+            <input asp-for="MilePoint" value="" class="form-control" />
+        </div>
+        <div>
+            <label>Latitude Number</label>
+            <input asp-for="Latitude" value="" class="form-control" />
+        </div>
+        <div>
+            <label>Longitude Number</label>
+            <input asp-for="Longitude" value="" class="form-control" />
+        </div>
+        <div>
+            <label>Day of the Month</label>
+            <input asp-for="Day" value="" class="form-control" />
+        </div>
+        <div>
+            <label>Month</label>
+            <input asp-for="Month" value="" class="form-control" />
+        </div>
+        <div>
+            <label>Hour of the Day</label>
+            <input asp-for="Hour" value="" class="form-control" />
+        </div>
+        <br />
+
+        <button class="btn btn-primary btn-sm" type="submit">Calculate Crash Severity</button>
+    </form>
+
+
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSf3KeQrtnZHAme5TZdiGlXpKYf4kl6eA&callback=initMap&v=weekly"
@@ -52,7 +83,8 @@
                 center: { lat: 40.758701, lng: -111.876183 },
                 zoom: 8,
             });
-        }</script>
+        }
+    </script>
 
 </body>
 </html>
@@ -60,7 +92,7 @@
 
 @*
     <body>
-        
+
 
         <script>
             var slc = { lat: 40.75176, lng: 111.88688 };
