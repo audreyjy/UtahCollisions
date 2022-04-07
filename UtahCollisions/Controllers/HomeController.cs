@@ -40,21 +40,21 @@ namespace UtahCollisions.Controllers
 
         // GET SummaryData for Authenticated Users
         [Authorize]
-        public IActionResult SummaryData(string city, string severityID, int pageNum = 1)
+        public IActionResult SummaryData(string admincity, string adminseverityID, int pageNum = 1)
         {
             int pageSize = 100;
 
-            if (severityID is null && city is null)
+            if (adminseverityID is null && admincity is null)
             {
                 ViewBag.Header = "All Records";
             }
-            else if (city is null && severityID != null)
+            else if (admincity is null && adminseverityID != null)
             {
-                ViewBag.Header = "Level " + severityID + " Severity Collision Records";
+                ViewBag.Header = "Level " + adminseverityID + " Severity Collision Records";
             }
-            else if (city != null)
+            else if (admincity != null)
             {
-                ViewBag.Header = city + " City Collision Records";
+                ViewBag.Header = admincity + " City Collision Records";
             }
 
             var x = new CollisionsViewModel
@@ -62,8 +62,8 @@ namespace UtahCollisions.Controllers
 
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
                 //.OrderBy(x => x.CRASH_ID)
-                .Where(x => x.CRASH_SEVERITY_ID.ToString() == severityID || severityID == null)
-                .Where(x => x.CITY == city || city == null)
+                .Where(x => x.CRASH_SEVERITY_ID.ToString() == adminseverityID || adminseverityID == null)
+                .Where(x => x.CITY == admincity || admincity == null)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
@@ -174,7 +174,7 @@ namespace UtahCollisions.Controllers
             TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
             string useruniquekey = Key;
             var user = User.ToString();
-            var setupinfo = tfa.GenerateSetupCode("GoogleAuthentication test", user, useruniquekey, false, 20);
+            var setupinfo = tfa.GenerateSetupCode("GoogleAuthentication Utah Collision", user, useruniquekey, false, 20);
             ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
 
             return View(); 

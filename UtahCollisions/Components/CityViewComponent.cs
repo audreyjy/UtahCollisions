@@ -11,19 +11,29 @@ namespace UtahCollisions.Components
 {
     public class CityViewComponent : ViewComponent
     {
+        //get data for component here
+        private iUtahCollisionRepository repo { get; set; }
+
+        //Contructor
+        public CityViewComponent(iUtahCollisionRepository temp)
+        {
+            repo = temp;
+        }
+
+
         // get data for component here 
-        private iUtahCollisionRepository repo;
+        //private iUtahCollisionRepository repo;
         //private SignInManager<IdentityUser> signInManager;
         //private UserManager<IdentityUser> userManager;
         //private UtahCollisionsContext utahCollisions;
         //public CityViewComponent(iUtahCollisionRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim, UtahCollisionsContext UCC)
-        public CityViewComponent(iUtahCollisionRepository temp)
-        {
-            repo = temp;
-            //userManager = um;
-            //signInManager = sim;
-            //utahCollisions = UCC;
-        }
+        //public CityViewComponent(iUtahCollisionRepository temp)
+        //{
+        //repo = temp;
+        //userManager = um;
+        //signInManager = sim;
+        //utahCollisions = UCC;
+        //}
 
 
         // invoke method 
