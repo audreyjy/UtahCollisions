@@ -30,6 +30,7 @@
     <!-- Main Stylesheet -->
     <link href="~/css/style.css" rel="stylesheet" />
 
+    <!---------CUSTOM CSS-------------->
     <!--SCROLL BAR TABLE-->
     <!--Table with scroll bars-->
     <style>
@@ -328,43 +329,43 @@
                 <div asp-validation-summary="All"></div>
 
                 <label asp-for="CRASH_ID">CRASH_ID: </label>
-                <input asp-for="CRASH_ID" class="form-control" />
+                <input required asp-for="CRASH_ID" class="form-control" />
                 <br />
 
                 <label asp-for="CRASH_DATETIME">CRASH DATETIME:</label>
-                <input asp-for="CRASH_DATETIME" class="form-control" />
+                <input required asp-for="CRASH_DATETIME" class="form-control" />
                 <br />
 
                 <label asp-for="ROUTE">ROUTE</label>
-                <input asp-for="ROUTE" class="form-control" />
+                <input required asp-for="ROUTE" class="form-control" />
                 <br />
 
                 <label asp-for="MILEPOINT">MILEPOINT</label>
-                <input asp-for="MILEPOINT" class="form-control" />
+                <input required asp-for="MILEPOINT" class="form-control" />
                 <br />
 
                 <label asp-for="LAT_UTM_Y">LAT_UTM_Y</label>
-                <input asp-for="LAT_UTM_Y" class="form-control" />
+                <input required asp-for="LAT_UTM_Y" class="form-control" />
                 <br />
 
                 <label asp-for="LONG_UTM_X">LONG_UTM_X</label>
-                <input asp-for="LONG_UTM_X" class="form-control" />
+                <input required asp-for="LONG_UTM_X" class="form-control" />
                 <br />
 
                 <label asp-for="MAIN_ROAD_NAME">MAIN_ROAD_NAME</label>
-                <input asp-for="MAIN_ROAD_NAME" class="form-control" />
+                <input required asp-for="MAIN_ROAD_NAME" class="form-control" />
                 <br />
 
                 <label asp-for="CITY">CITY</label>
-                <input asp-for="CITY" class="form-control" />
+                <input required asp-for="CITY" class="form-control" />
                 <br />
 
                 <label asp-for="COUNTY_NAME">COUNTY_NAME</label>
-                <input asp-for="COUNTY_NAME" class="form-control" />
+                <input required asp-for="COUNTY_NAME" class="form-control" />
                 <br />
 
                 <label asp-for="CRASH_SEVERITY_ID">CRASH_SEVERITY:</label>
-                <select asp-for="CRASH_SEVERITY_ID" class="form-control">
+                <select required asp-for="CRASH_SEVERITY_ID" class="form-control">
                     <option value="">Select a Severity</option>
                     <option value="1">No Injury</option>
                     <option value="2">Possible Injury</option>
@@ -375,98 +376,98 @@
                 <br />
 
                 <label asp-for="WORK_ZONE_RELATED">WORK_ZONE_RELATED</label><br />
-                <input asp-for="WORK_ZONE_RELATED" value="true" type="radio">True</input>
-                <input asp-for="WORK_ZONE_RELATED" value="False" type="radio">False</input>
+                <input asp-for="WORK_ZONE_RELATED" value="true" type="radio" name="wzr" required>True</input>
+                <input asp-for="WORK_ZONE_RELATED" value="False" type="radio" name="wzr">False</input>
                 <br /><br />
 
                 <label asp-for="PEDESTRIAN_INVOLVED">PEDESTRIAN_INVOLVED</label><br />
-                <input asp-for="PEDESTRIAN_INVOLVED" value="true" type="radio">True</input>
-                <input asp-for="PEDESTRIAN_INVOLVED" value="False" type="radio">False</input>
+                <input asp-for="PEDESTRIAN_INVOLVED" value="true" type="radio" name="pi" required>True</input>
+                <input asp-for="PEDESTRIAN_INVOLVED" value="False" type="radio" name="pi">False</input>
                 <br /><br />
 
                 <label asp-for="BICYCLIST_INVOLVED">BICYCLIST_INVOLVED</label><br />
-                <input asp-for="BICYCLIST_INVOLVED" value="true" type="radio">True</input>
-                <input asp-for="BICYCLIST_INVOLVED" value="False" type="radio">False</input>
+                <input asp-for="BICYCLIST_INVOLVED" value="true" type="radio" name="bi" required>True</input>
+                <input asp-for="BICYCLIST_INVOLVED" value="False" type="radio" name="bi">False</input>
                 <br /><br />
 
                 <label asp-for="MOTORCYCLE_INVOLVED">MOTORCYCLE_INVOLVED</label><br />
-                <input asp-for="MOTORCYCLE_INVOLVED" value="true" type="radio">True</input>
-                <input asp-for="MOTORCYCLE_INVOLVED" value="False" type="radio">False</input>
+                <input asp-for="MOTORCYCLE_INVOLVED" value="true" type="radio" name="mi" required>True</input>
+                <input asp-for="MOTORCYCLE_INVOLVED" value="False" type="radio" name="mi">False</input>
                 <br /><br />
 
                 <label asp-for="IMPROPER_RESTRAINT">IMPROPER_RESTRAINT</label><br />
-                <input asp-for="IMPROPER_RESTRAINT" value="true" type="radio">True</input>
-                <input asp-for="IMPROPER_RESTRAINT" value="False" type="radio">False</input>
+                <input asp-for="IMPROPER_RESTRAINT" value="true" type="radio" name="ir" required>True</input>
+                <input asp-for="IMPROPER_RESTRAINT" value="False" type="radio" name="ir">False</input>
                 <br /><br />
 
                 <label asp-for="UNRESTRAINED">UNRESTRAINED</label><br />
-                <input asp-for="UNRESTRAINED" value="true" type="radio">True</input>
-                <input asp-for="UNRESTRAINED" value="False" type="radio">False</input>
+                <input asp-for="UNRESTRAINED" value="true" type="radio" name="u" required>True</input>
+                <input asp-for="UNRESTRAINED" value="False" type="radio" name="u">False</input>
                 <br /><br />
 
                 <label asp-for="DUI">DUI</label><br />
-                <input asp-for="DUI" value="true" type="radio">True</input>
-                <input asp-for="DUI" value="False" type="radio">False</input>
+                <input asp-for="DUI" value="true" type="radio" name="dui" required>True</input>
+                <input asp-for="DUI" value="False" type="radio" name="dui">False</input>
                 <br /><br />
 
                 <label asp-for="INTERSECTION_RELATED">INTERSECTION_RELATED</label><br />
-                <input asp-for="INTERSECTION_RELATED" value="true" type="radio">True</input>
-                <input asp-for="INTERSECTION_RELATED" value="False" type="radio">False</input>
+                <input asp-for="INTERSECTION_RELATED" value="true" type="radio" name="ir" required>True</input>
+                <input asp-for="INTERSECTION_RELATED" value="False" type="radio" name="ir">False</input>
                 <br /><br />
 
                 <label asp-for="WILD_ANIMAL_RELATED">WILD_ANIMAL_RELATED</label><br />
-                <input asp-for="WILD_ANIMAL_RELATED" value="true" type="radio">True</input>
-                <input asp-for="WILD_ANIMAL_RELATED" value="False" type="radio">False</input>
+                <input asp-for="WILD_ANIMAL_RELATED" value="true" type="radio" name="war" required>True</input>
+                <input asp-for="WILD_ANIMAL_RELATED" value="False" type="radio" name="war">False</input>
                 <br /><br />
 
                 <label asp-for="DOMESTIC_ANIMAL_RELATED">DOMESTIC_ANIMAL_RELATED</label><br />
-                <input asp-for="DOMESTIC_ANIMAL_RELATED" value="true" type="radio">True</input>
-                <input asp-for="DOMESTIC_ANIMAL_RELATED" value="False" type="radio">False</input>
+                <input asp-for="DOMESTIC_ANIMAL_RELATED" value="true" type="radio" name="dar" required>True</input>
+                <input asp-for="DOMESTIC_ANIMAL_RELATED" value="False" type="radio" name="dar">False</input>
                 <br /><br />
 
                 <label asp-for="OVERTURN_ROLLOVER">OVERTURN_ROLLOVER</label><br />
-                <input asp-for="OVERTURN_ROLLOVER" value="true" type="radio">True</input>
-                <input asp-for="OVERTURN_ROLLOVER" value="False" type="radio">False</input>
+                <input asp-for="OVERTURN_ROLLOVER" value="true" type="radio" name="or" required>True</input>
+                <input asp-for="OVERTURN_ROLLOVER" value="False" type="radio" name="or">False</input>
                 <br /><br />
 
                 <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">COMMERCIAL_MOTOR_VEH_INVOLVED</label><br />
-                <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="true" type="radio">True</input>
-                <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="False" type="radio">False</input>
+                <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="true" type="radio" name="cmv" required>True</input>
+                <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="False" type="radio" name="cmv">False</input>
                 <br /><br />
 
                 <label asp-for="TEENAGE_DRIVER_INVOLVED">TEENAGE_DRIVER_INVOLVED</label><br />
-                <input asp-for="TEENAGE_DRIVER_INVOLVED" value="true" type="radio">True</input>
-                <input asp-for="TEENAGE_DRIVER_INVOLVED" value="False" type="radio">False</input>
+                <input asp-for="TEENAGE_DRIVER_INVOLVED" value="true" type="radio" name="tdi" required>True</input>
+                <input asp-for="TEENAGE_DRIVER_INVOLVED" value="False" type="radio" name="tdi">False</input>
                 <br /><br />
 
                 <label asp-for="OLDER_DRIVER_INVOLVED">OLDER_DRIVER_INVOLVED</label><br />
-                <input asp-for="OLDER_DRIVER_INVOLVED" value="true" type="radio">True</input>
-                <input asp-for="OLDER_DRIVER_INVOLVED" value="False" type="radio">False</input>
+                <input asp-for="OLDER_DRIVER_INVOLVED" value="true" type="radio" name="rad" required>True</input>
+                <input asp-for="OLDER_DRIVER_INVOLVED" value="False" type="radio" name="rad">False</input>
                 <br /><br />
 
                 <label asp-for="NIGHT_DARK_CONDITION">NIGHT_DARK_CONDITION</label><br />
-                <input asp-for="NIGHT_DARK_CONDITION" value="true" type="radio">True</input>
-                <input asp-for="NIGHT_DARK_CONDITION" value="False" type="radio">False</input>
+                <input asp-for="NIGHT_DARK_CONDITION" value="true" type="radio" name="ndc" required>True</input>
+                <input asp-for="NIGHT_DARK_CONDITION" value="False" type="radio" name="ndc">False</input>
                 <br /><br />
 
                 <label asp-for="SINGLE_VEHICLE">SINGLE_VEHICLE</label><br />
-                <input asp-for="SINGLE_VEHICLE" value="true" type="radio">True</input>
-                <input asp-for="SINGLE_VEHICLE" value="False" type="radio">False</input>
+                <input asp-for="SINGLE_VEHICLE" value="true" type="radio" name="sv" required>True</input>
+                <input asp-for="SINGLE_VEHICLE" value="False" type="radio" name="sv">False</input>
                 <br /><br />
 
                 <label asp-for="DISTRACTED_DRIVING">DISTRACTED_DRIVING</label><br />
-                <input asp-for="DISTRACTED_DRIVING" value="true" type="radio">True</input>
-                <input asp-for="DISTRACTED_DRIVING" value="False" type="radio">False</input>
+                <input asp-for="DISTRACTED_DRIVING" value="true" type="radio" name="dd" required>True</input>
+                <input asp-for="DISTRACTED_DRIVING" value="False" type="radio" name="dd">False</input>
                 <br /><br />
 
                 <label asp-for="DROWSY_DRIVING">DROWSY_DRIVING</label><br />
-                <input asp-for="DROWSY_DRIVING" value="true" type="radio">True</input>
-                <input asp-for="DROWSY_DRIVING" value="False" type="radio">False</input>
+                <input asp-for="DROWSY_DRIVING" value="true" type="radio" name="drd" required>True</input>
+                <input asp-for="DROWSY_DRIVING" value="False" type="radio" name="drd">False</input>
                 <br /><br />
 
                 <label asp-for="ROADWAY_DEPARTURE">ROADWAY_DEPARTURE</label><br />
-                <input asp-for="ROADWAY_DEPARTURE" value="true" type="radio">True</input>
-                <input asp-for="ROADWAY_DEPARTURE" value="False" type="radio">False</input>
+                <input asp-for="ROADWAY_DEPARTURE" value="true" type="radio" name="rde" required>True</input>
+                <input asp-for="ROADWAY_DEPARTURE" value="False" type="radio" name="rde">False</input>
                 <br /><br />
 
                 <button class="btn btn-primary btn-block" type="submit">Submit Collision</button>
