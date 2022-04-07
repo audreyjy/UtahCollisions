@@ -13,7 +13,30 @@
             @foreach (string c in Model)
             {
                 <li><a asp-controller="Home" asp-action="SummaryData" asp-route-severityID="@c" 
-                       class="dropdown-item">@c</a></li>
+                       class="dropdown-item">
+                    @{  if (c == 1.ToString())
+                        {
+                            <p>1 - No Injury</p>
+                        }
+                        else if (c == 2.ToString())
+                        {
+                            <p>2 - Possible Injury</p>
+                        }
+                        else if (c == 3.ToString())
+                        {
+                            <p>3 - Suspected Minor Injury</p>
+                        }
+                        else if (c == 4.ToString())
+                        {
+                            <p>4 - Suspected Serious Injury</p>
+                        }
+                        else if (c == 5.ToString())
+                        {
+                            <p>5 - Fatal</p>
+                        }
+
+
+                     }</a></li>
             }
 
         </ul>
