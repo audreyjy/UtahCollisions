@@ -14,61 +14,32 @@
     <script src="./index.js"></script>
 
     <style>
-         /* Always set the map height explicitly to define the size of the div
+        /* Always set the map height explicitly to define the size of the div
         * element that contains the map. */
-         #map {
-             height: 400px;
-             width: 400px;
-             /*width: 77%;
-             position: absolute;
-             overflow: hidden;*/
-         }
+        #map {
+            height: 400px;
+            width: 400px;
+            border-radius: 10px;
+        }
 
-         /* Optional: Makes the sample page fill the window. */
-         html,
-         body {
-             height: 100%;
-             margin: 0;
-             padding: 0;
-         }
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
+
 <body>
-    <form>
-        <div>
+    <br />
+    <center>
+        <div class="row">
             <div id="map"></div>
         </div>
-
-        <div>
-            <label>Mile Point</label>
-            <input asp-for="MilePoint" value="" class="form-control" />
-        </div>
-        <div>
-            <label>Latitude Number</label>
-            <input asp-for="Latitude" value="" class="form-control" />
-        </div>
-        <div>
-            <label>Longitude Number</label>
-            <input asp-for="Longitude" value="" class="form-control" />
-        </div>
-        <div>
-            <label>Day of the Month</label>
-            <input asp-for="Day" value="" class="form-control" />
-        </div>
-        <div>
-            <label>Month</label>
-            <input asp-for="Month" value="" class="form-control" />
-        </div>
-        <div>
-            <label>Hour of the Day</label>
-            <input asp-for="Hour" value="" class="form-control" />
-        </div>
-        <br />
-
-        <button class="btn btn-primary btn-sm" type="submit">Calculate Crash Severity</button>
-    </form>
-
-
+    </center>
+    
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSf3KeQrtnZHAme5TZdiGlXpKYf4kl6eA&callback=initMap&v=weekly"
@@ -76,6 +47,41 @@
     </script>
 
     <script>
+        function initMap() {
+            const myLatlng = { lat: 40.25028865490975, lng: -111.6479238761139 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 7,
+                center: myLatlng,
+            });
+            // Create the initial InfoWindow.
+            let infoWindow = new google.maps.InfoWindow({
+                content: "Click the map to get Lat/Lng!",
+                position: myLatlng,
+            });
+
+            infoWindow.open(map);
+            // Configure the click listener.
+            map.addListener("click", (mapsMouseEvent) => {
+                // Close the current InfoWindow.
+                infoWindow.close();
+                // Create a new InfoWindow.
+                infoWindow = new google.maps.InfoWindow({
+                    position: mapsMouseEvent.latLng,
+                });
+                infoWindow.setContent(
+                    JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+                );
+                infoWindow.open(map);
+            });
+        }
+    </script>
+
+
+</body>
+</html>
+
+
+@*<script>
         let map;
 
         function initMap() {
@@ -84,41 +90,4 @@
                 zoom: 8,
             });
         }
-    </script>
-
-</body>
-</html>
-
-
-@*
-    <body>
-
-
-        <script>
-            var slc = { lat: 40.75176, lng: 111.88688 };
-            var map = new google.maps.Map(document.getElementById('modal-map2'), {
-                zoom: 13,
-                center: slc,
-                mapTypeId: google.map.MapTypeId.HYBRID,
-                zoomControl: true,
-                //Position Zoom Controls
-                zoomControlOptions: {
-                    position: google.maps.ControlPosition.LEFT_BOTTOM
-                },
-                //scaleControl: true,
-                streetViewControl: true,
-                //Position for Street view control
-                streetViewControlOptions: {
-                    position: google.maps.ControlPosition.LEFT_BOTTOM
-                },
-                mapTypeControlOptions: {
-                    position: google.maps.ControlPosition.RIGHT_CENTER
-                },
-            });
-        </script>
-
-
-    </body>*@
-
-
-}
+</script>*@
