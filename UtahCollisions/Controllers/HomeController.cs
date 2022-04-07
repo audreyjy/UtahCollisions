@@ -145,26 +145,40 @@ namespace UtahCollisions.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginTest(string username, string password)
         {
-            
-            var user = await userManager.FindByNameAsync(username);
 
-            if ( user != null)
+            //var no2FA = await userManager.FindByNameAsync(username);
+
+            //if (no2FA != null)
+            //{
+            //    var signInResult = await signInManager.PasswordSignInAsync(no2FA, password, false, false);
+            //    if (signInResult.Succeeded)
+            //    {
+            //        return RedirectToAction("SummaryData");
+            //    }
+            //}
+
+            var user = await userManager.FindByNameAsync(username);
+            
+
+            if (user != null)
             {
                 // sign in 
-              
+
                 var signInResult = await signInManager.PasswordSignInAsync(user, password, false, false);
-                
+
                 if (signInResult.Succeeded)
                 {
                     //adding 2FA
-                        
-                        return RedirectToAction("VerifyAuth", user);
+
+                    return RedirectToAction("VerifyAuth");
                     //
 
-                    
+
                     // return RedirectToAction("SummaryData");
                 }
-            }; 
+            };
+
+
 
             return RedirectToAction("LoginTest");
         }
@@ -172,7 +186,15 @@ namespace UtahCollisions.Controllers
         //adding 2FA 
         public IActionResult VerifyAuth()
         {
-            
+            //Information to generate QR code: 
+            TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
+            string useruniquekey = Key;
+            //Session["Useruniquekey"] = useruniquekey;
+            var user = User.ToString();
+            var setupinfo = tfa.GenerateSetupCode("GoogleAuthentication test", user, useruniquekey, false, 20);
+            ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
+
+
             return View(); 
         }
 
@@ -198,7 +220,7 @@ namespace UtahCollisions.Controllers
         }
 
 
-        // for reference Base32Encoding.ToBytes()
+        
         public IActionResult AdminQR()
         {
             TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
