@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,15 +13,16 @@ namespace UtahCollisions.Components
     {
         // get data for component here 
         private iUtahCollisionRepository repo;
-        private SignInManager<IdentityUser> signInManager;
-        private UserManager<IdentityUser> userManager;
-        private UtahCollisionsContext utahCollisions;
-        public CityViewComponent(iUtahCollisionRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim, UtahCollisionsContext UCC)
+        //private SignInManager<IdentityUser> signInManager;
+        //private UserManager<IdentityUser> userManager;
+        //private UtahCollisionsContext utahCollisions;
+        //public CityViewComponent(iUtahCollisionRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim, UtahCollisionsContext UCC)
+        public CityViewComponent(iUtahCollisionRepository temp)
         {
             repo = temp;
-            userManager = um;
-            signInManager = sim;
-            utahCollisions = UCC;
+            //userManager = um;
+            //signInManager = sim;
+            //utahCollisions = UCC;
         }
 
 
@@ -38,5 +40,7 @@ namespace UtahCollisions.Components
 
             return View(city);
         }
+
+        
     }
 }

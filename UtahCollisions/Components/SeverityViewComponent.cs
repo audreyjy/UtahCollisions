@@ -20,15 +20,17 @@ namespace UtahCollisions.Components
         //}
 
         private iUtahCollisionRepository repo;
-        private SignInManager<IdentityUser> signInManager;
-        private UserManager<IdentityUser> userManager;
-        private UtahCollisionsContext utahCollisions;
-        public SeverityViewComponent(iUtahCollisionRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim, UtahCollisionsContext UCC)
+        //private SignInManager<IdentityUser> signInManager;
+        //private UserManager<IdentityUser> userManager;
+        //private UtahCollisionsContext utahCollisions;
+        //public SeverityViewComponent(iUtahCollisionRepository temp, UserManager<IdentityUser> um, SignInManager<IdentityUser> sim, UtahCollisionsContext UCC)
+
+        public SeverityViewComponent(iUtahCollisionRepository temp)
         {
             repo = temp;
-            userManager = um;
-            signInManager = sim;
-            utahCollisions = UCC;
+            //userManager = um;
+            //signInManager = sim;
+            //utahCollisions = UCC;
         }
 
 
