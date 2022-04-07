@@ -329,6 +329,7 @@
 
             <form asp-controller="Home" asp-action="RegisterTest" method="post">
                 <div class="form-group">
+
                     <label>Username: </label>
                     <input type="text" name="username" value="" class="form-control"/>
                 </div>
@@ -336,6 +337,16 @@
                 <div class="form-group">
                     <label>Password: </label>
                     <input type="password" name="password" value="" class="form-control"/>
+                </div>
+                <div class="form-text text-danger">
+                    <p>Passwords Requirements: </p>
+                    <ul>
+                        <li>Minimum 8 Characters</li>
+                        <li>At Least One Number</li>
+                        <li>At Least One Special Character</li>
+                        <li>At Least One Upper Case Letter</li>
+                        <li>At Least One Lower Case Letter</li>
+                    </ul>
                 </div>
 
                 <button class="btn btn-primary btn-block" type="submit">Log In</button>
