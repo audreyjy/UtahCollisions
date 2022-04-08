@@ -1,0 +1,22 @@
+﻿@{
+}
+
+@model IQueryable<string>
+
+<div class="d-grid gap-2">
+
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter by Route<i class="icofont-thin-down"></i></a>
+        <ul class="dropdown-menu scroll" style="height:300px; width:350px;" aria-labelledby="dropdown02">
+
+            @foreach (string c in Model)
+            {
+                <li>
+                    <a asp-controller="Home" asp-action="SummaryData" asp-route-adminroute="@c"
+                       class="dropdown-item">@c</a>
+                </li>
+            }
+
+        </ul>
+    </div>
+</div>
