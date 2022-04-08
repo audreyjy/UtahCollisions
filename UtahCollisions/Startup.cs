@@ -114,6 +114,7 @@ namespace UtahCollisions
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -124,6 +125,17 @@ namespace UtahCollisions
                 {
                     Secure = CookieSecurePolicy.Always
                 });
+
+            ////////CSP Header/////////////
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("Content-Security-Policy-Report-Only", "default-src 'self'");
+                await next();
+            });
+            ///if you’re trying to apply CSP in an existing website it is quite overwhelming because most of the code 
+            ///- inline styles, scripts, events and all may not work. To avoid this issue, you can use Content-Security-Policy-Report-Only 
+            ///header with the report URL parameter - it will not ignore the script or resource instead it will display the error to the report URL.
+            ///////////////////////////////
 
             app.UseRouting();
 
