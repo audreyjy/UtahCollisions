@@ -12,9 +12,9 @@
                     <div class="divider mb-3"></div>
                     <span class="text-uppercase text-sm letter-spacing " style="color: #002D62;"><b>The next step to safety</b></span>
                     <h1 class="mb-3 mt-3">Utah Motor Vehicle Collision Analysis</h1>
-                    <div style="background-color: #F0F8FF; opacity: 0.5; border-radius:10px;">
-                        <p class="mb-4 pr-5" style="color: #002D62;"><b>Thousands of people in Utah die each year due to vehicle collisions. Our sole mission is to help save lives. We are dedicated to protecting our community by providing lawmakers and government officials with useful information to promote change. With your help, we can create a better and safer Utah.</b></p>
-                    </div> <br />                  
+                    <div style="  opacity: 0.5; border-radius: 10px; width: 550px; line-height: 150px; height: 150px; display: flex; justify-content: center; ">
+                            <p class="mb-4 pr-5" style="color: #002D62;"><b>Thousands of people in Utah die each year due to vehicle collisions. Our sole mission is to help save lives. We are dedicated to protecting our community by providing lawmakers and government officials with useful information to promote change. With your help, we can create a better and safer Utah.</b></p>
+                    </div>                
                     <div class="btn-container ">
                         <a href="https://www.udot.utah.gov/connect/projects/" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Get Informed <i class="icofont-simple-right ml-2  "></i></a>
                     </div>
@@ -36,19 +36,19 @@
                         <span>Database</span>
                         <h4 class="mb-3">Check out the latest collision data</h4>
                         <p>Filter through our large database to discover the severity of thousands of crashes that have happened all over Utah.</p>
-                        <a asp-controller="Home" asp-action="SummaryDataNonAuth" class="btn btn-main btn-round-full">Explore</a>
+                        <a asp-controller="Home" asp-action="SummaryDataNonAuth" class="btn btn-main btn-round-full">Filter</a>
 
                     </div>
 
                     <div class="feature-item mb-5 mb-lg-0">
                         <div class="feature-icon mb-4">
-                            <img src="~/images/about/donateIcon.webp" alt="" class="img-fluid" style="width:60px; height:60px;">
+                            <img src="~/images/about/dashboardIcon.png" alt="" class="img-fluid" style="width:60px; height:60px; border-radius:10px;">
                         </div>
                         <span>Dashboard</span>
 
                         <h4 class="mb-3">Visualize the Data</h4>
                         <p class="mb-4">We've created a unique dashboard to help visualize and share crash data with shareholders and the public! This dashboard focuses on specific traffic safety factors and provides users with detailed, filterable information regarding each emphasis area.</p>
-                        <a class="btn btn-main btn-round-full" href="https://www.utahsafetycouncil.org/ProductDetails.aspx?ProductID=777">Donate</a>
+                        <a asp-controller="Home" asp-action="SummaryDataNonAuth" class="btn btn-main btn-round-full">Explore</a>
 
 
                     </div>
@@ -60,8 +60,8 @@
 
                         <span>Machine Learning</span>
                         <h4 class="mb-3">Use our Prediction Algorithm</h4>
-                        <p>Discover the effect and likelyhood of collisions near you! Our algorithm helps prepare officers and first responders all across Utah.</p>
-                        <a asp-controller="Inference" asp-action="EnterData" class="btn btn-main btn-round-full">Analyze</a>
+                        <p>Discover the effect and likelyhood of collisions near you! Our algorithm helps prepare first responders all across Utah.</p>
+                        <a asp-controller="Inference" asp-action="EnterData" class="btn btn-main btn-round-full">Predict</a>
 
                     </div>
                 </div>
