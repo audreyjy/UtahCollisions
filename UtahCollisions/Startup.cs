@@ -119,8 +119,14 @@ namespace UtahCollisions
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy(); // for cookie consent 
+            app.UseCookiePolicy(
+                new CookiePolicyOptions
+                {
+                    Secure = CookieSecurePolicy.Always
+                });
+
             app.UseRouting();
+
 
             app.UseAuthentication(); // for authentication
             app.UseAuthorization(); // for authoriation
