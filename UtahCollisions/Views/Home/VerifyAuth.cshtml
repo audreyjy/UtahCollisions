@@ -318,7 +318,20 @@
 
             
             <form method="post">
-                <a class="text-center text-color-primary">Please scan the QR code below to retrieve your verification code.</a>
+                <a class="text-center text-color-primary">Please scan the QR code below using an authorization app to retrieve your verification code.</a>
+                <div class="form-text">
+                    <p>Use One of the Following Authorization Apps: </p>
+
+                    <a class="text-center">Authy</a>
+                    <br />
+                    <a class="text-center">Krypton</a>
+                    <br />
+                    <a class="text-center">Google Authenticator</a>
+                    <br />
+                    <a class="text-center">Authenticator (Microsoft)</a>
+
+                </div>
+                <br />
                 <img src="@ViewBag.qrcode" style="width:300px;" />
                 <br /> <br />
                 <input type="text" name="passcode" placeholder="Enter 6 digit verification code here" class="form-control" /><br />
