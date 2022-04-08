@@ -203,20 +203,6 @@ namespace UtahCollisions.Controllers
         }
 
 
-        
-        //public IActionResult AdminQR()
-        //{
-        //    TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
-        //    string useruniquekey = Key;
-        //    //Session["Useruniquekey"] = useruniquekey;
-        //    var user = User.ToString();  
-        //    var setupinfo = tfa.GenerateSetupCode("GoogleAuthentication test", user, useruniquekey, false, 20);
-        //    ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
-            
-        //    return View(); 
-        //}
-        //
-
         // GET Register
 
         [HttpGet]
@@ -355,6 +341,11 @@ namespace UtahCollisions.Controllers
         public IActionResult Map()
         {
             return View();
+        }
+
+        public IActionResult Dashboard()
+        {
+            return View(); 
         }
 
     }
