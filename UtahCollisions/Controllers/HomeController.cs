@@ -168,6 +168,7 @@ namespace UtahCollisions.Controllers
         }
 
         //adding 2FA 
+        [HttpGet]
         public IActionResult VerifyAuth()
         {
             //Information to generate QR code: 
