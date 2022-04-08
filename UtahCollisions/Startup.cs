@@ -33,7 +33,7 @@ namespace UtahCollisions
 
             services.AddDbContext<UtahCollisionsContext>(options =>
             { 
-                options.UseMySql(Configuration["CollisionsDBConnection"]);
+                options.UseMySql(Configuration["ConnectionStrings:CollisionsDBConnection"]);
             });
 
             // for repository pattern 
@@ -53,7 +53,7 @@ namespace UtahCollisions
             // for authentication users + roles 
             services.AddDbContext<AppIdentityDBContext>(options =>
             {
-                options.UseMySql(Configuration["IdentityDBConnection"]);
+                options.UseMySql(Configuration["ConnectionStrings:IdentityDBConnection"]);
             });
 
             // for authentication 
