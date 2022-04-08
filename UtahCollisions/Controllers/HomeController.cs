@@ -40,30 +40,40 @@ namespace UtahCollisions.Controllers
 
         // GET SummaryData for Authenticated Users
         [Authorize]
-        public IActionResult SummaryData(string admincity, string adminseverityID, int pageNum = 1)
+        public IActionResult SummaryData(string adminroute, string adminmainroad, string admincity, string adminseverityID, int pageNum = 1)
         {
             int pageSize = 100;
 
-            if (adminseverityID is null && admincity is null)
+            if (adminseverityID is null && admincity is null && adminmainroad is null && adminroute is null)
             {
                 ViewBag.Header = "All Records";
             }
-            else if (admincity is null && adminseverityID != null)
+            else if (admincity is null && adminmainroad is null && adminroute is null && adminseverityID != null)
             {
                 ViewBag.Header = "Level " + adminseverityID + " Severity Collision Records";
             }
-            else if (admincity != null)
+            else if (admincity is null && adminmainroad is null && adminseverityID is null && adminroute != null)
+            {
+                ViewBag.Header = "Records for Route " + adminroute;
+            }
+            else if (adminmainroad is null && adminseverityID is null && adminroute is null && admincity != null)
             {
                 ViewBag.Header = admincity + " City Collision Records";
+            }
+            else if (adminseverityID is null && adminroute is null && admincity is null && adminmainroad != null)
+            {
+                ViewBag.Header = "Records for Main Road " + adminmainroad; 
             }
 
             var x = new CollisionsViewModel
             {
 
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
-                .OrderBy(x => x.CRASH_ID)
+                .OrderBy(x => x.CRASH_DATETIME)
                 .Where(x => x.CRASH_SEVERITY_ID.ToString() == adminseverityID || adminseverityID == null)
                 .Where(x => x.CITY == admincity || admincity == null)
+                .Where(x => x.MAIN_ROAD_NAME == adminmainroad || adminmainroad == null)
+                .Where(x => x.ROUTE == adminroute || adminroute == null)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
@@ -80,7 +90,7 @@ namespace UtahCollisions.Controllers
         }
 
         // GET Summary Data for Non-Authenticated Users
-        public IActionResult SummaryDataNonAuth(string city, string severityID, int pageNum = 1)
+        public IActionResult SummaryDataNonAuth(string mainRoad, string city, string severityID, int pageNum = 1)
         {
             int pageSize = 100;
 
@@ -103,7 +113,8 @@ namespace UtahCollisions.Controllers
                 Utah_Crash_Data_2020 = repo.Utah_Crash_Data_2020
                 .Where(x => x.CRASH_SEVERITY_ID.ToString() == severityID || severityID == null)
                 .Where(x => x.CITY == city || city == null)
-                .OrderBy(x => x.CRASH_ID)
+                .Where(x => x.MAIN_ROAD_NAME == mainRoad || mainRoad == null)
+                .OrderBy(x => x.CRASH_DATETIME)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
                 
@@ -202,20 +213,6 @@ namespace UtahCollisions.Controllers
             return RedirectToAction("LoginTest"); 
         }
 
-
-        
-        //public IActionResult AdminQR()
-        //{
-        //    TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
-        //    string useruniquekey = Key;
-        //    //Session["Useruniquekey"] = useruniquekey;
-        //    var user = User.ToString();  
-        //    var setupinfo = tfa.GenerateSetupCode("GoogleAuthentication test", user, useruniquekey, false, 20);
-        //    ViewBag.qrcode = setupinfo.QrCodeSetupImageUrl;
-            
-        //    return View(); 
-        //}
-        //
 
         // GET Register
 
@@ -355,6 +352,11 @@ namespace UtahCollisions.Controllers
         public IActionResult Map()
         {
             return View();
+        }
+
+        public IActionResult Dashboard()
+        {
+            return View(); 
         }
 
     }
