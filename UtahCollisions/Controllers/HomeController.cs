@@ -154,11 +154,11 @@ namespace UtahCollisions.Controllers
                 {
                     //adding 2FA
 
-                    return RedirectToAction("VerifyAuth");
+                    //return RedirectToAction("VerifyAuth");
                     //
 
 
-                    // return RedirectToAction("SummaryData");
+                     return RedirectToAction("SummaryData");
                 }
             };
 
